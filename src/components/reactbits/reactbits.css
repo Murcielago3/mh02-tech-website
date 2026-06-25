@@ -1,0 +1,64 @@
+/* ─── SpotlightCard ─────────────────────────────────────────── */
+.rb-spotlight-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.rb-spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--spot-opacity, 0);
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    var(--spot-color, rgba(47, 138, 84, 0.25)),
+    transparent 70%
+  );
+}
+
+/* ─── ShinyText ─────────────────────────────────────────────── */
+.rb-shiny {
+  --shine-base: rgba(220, 240, 228, 0.55);
+  color: var(--shine-base);
+  background: linear-gradient(
+    100deg,
+    var(--shine-base) 0%,
+    var(--shine-base) 38%,
+    #ffffff 50%,
+    var(--shine-base) 62%,
+    var(--shine-base) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rb-shine linear infinite;
+}
+.rb-shiny--off {
+  animation: none;
+}
+@keyframes rb-shine {
+  0% { background-position: 220% 0; }
+  100% { background-position: -120% 0; }
+}
+
+/* ─── GradientText ──────────────────────────────────────────── */
+.rb-gradient-text {
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rb-gradient-pan linear infinite;
+}
+@keyframes rb-gradient-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 250% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rb-shiny, .rb-gradient-text { animation: none; }
+}

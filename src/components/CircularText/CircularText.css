@@ -1,0 +1,22 @@
+.circular-text {
+  --size: 200px;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-text span {
+  position: absolute;
+  font-size: calc(var(--size) * 0.1);
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #e0e0e0;
+  transform-origin: 0 calc(var(--size) / 2);
+  user-select: none;
+}

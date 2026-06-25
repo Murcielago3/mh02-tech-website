@@ -1,0 +1,30 @@
+/* ─── Animated letter in the circle ──────────────────────────── */
+.anim-letter-wrapper {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity, color;
+  pointer-events: none;
+}
+
+.anim-letter {
+  font-family: 'Stack Sans Notch', 'Stack Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  white-space: pre;
+  user-select: none;
+  font-feature-settings: "ss01" 1, "ss02" 1, "liga" 1;
+}
+
+/* ─── Green fill overlay ────────────────────────────────────── */
+.green-fill-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: #287457;
+  z-index: 900;
+  will-change: height;
+}
