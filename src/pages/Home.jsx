@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { lazy, Suspense, useRef, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { SpotlightCard, Magnet, SideRays } from '../components/reactbits';
@@ -7,9 +7,12 @@ import {
   IconShield, IconBolt, IconLayers, IconArrow, IconDatabase,
 } from '../components/Icons.jsx';
 import AppFrame from '../components/AppFrame/AppFrame.jsx';
-import Antigravity from '../components/reactbits/Antigravity';
 import { SCREENS } from '../data/screens.js';
 import './Home.css';
+
+/* three.js is ~900KB minified - load the particle background on demand
+   instead of shipping it in the main bundle */
+const Antigravity = lazy(() => import('../components/reactbits/Antigravity'));
 
 const fadeUp = {
   initial: { opacity: 0, y: 26 },
@@ -59,33 +62,6 @@ const AUTOMATIONS = [
   { when: 'SUN · 12:00', title: 'Timesheet reminders', desc: 'If you haven\'t submitted, you get tagged on Sunday. Simple as that.', channel: '#common' },
   { when: '1st · 09:00', title: 'Monthly report', desc: 'Last month\'s numbers, assembled and posted to leadership. Nobody had to compile a thing.', channel: '#management' },
   { when: 'INSTANT', title: 'Event notifications', desc: 'Someone submits, approves, or rejects something? The right people know immediately.', channel: 'both' },
-];
-
-const PLANS = [
-  {
-    name: 'Pilot',
-    tag: 'FOR SMALL TEAMS',
-    blurb: 'Try it with one team first. See if it sticks before you go wider.',
-    features: ['Up to 15 seats', 'All core modules', 'Slack automation', 'Email support'],
-    cta: 'Start a pilot',
-    featured: false,
-  },
-  {
-    name: 'Studio',
-    tag: 'MOST POPULAR',
-    blurb: 'Everything you need to run a growing studio. No module limits.',
-    features: ['Unlimited seats', 'All modules + reporting', 'Custom approval chains', 'Custom Slack workflows', 'Priority support'],
-    cta: 'Book a demo',
-    featured: true,
-  },
-  {
-    name: 'Enterprise',
-    tag: 'SELF-HOSTED',
-    blurb: 'Runs on your servers, shaped around how you actually work.',
-    features: ['Your infra, your data', 'SSO & audit trails', 'Custom modules', 'Dedicated onboarding', 'SLA-backed support'],
-    cta: 'Talk to us',
-    featured: false,
-  },
 ];
 
 const FAQS = [
@@ -439,7 +415,8 @@ export default function Home({ introDone = true }) {
       <section className="section contact" id="contact">
         <motion.div className="contact__panel container" {...fadeUp}>
           <div className="contact__bg-canvas">
-            <Antigravity
+            <Suspense fallback={null}>
+              <Antigravity
               count={1100}
               magnetRadius={5}
               ringRadius={8}
@@ -455,7 +432,8 @@ export default function Home({ introDone = true }) {
               pulseSpeed={5.3}
               particleShape="sphere"
               fieldStrength={20}
-            />
+              />
+            </Suspense>
           </div>
           <div className="contact__content">
             <h2 className="contact__title">

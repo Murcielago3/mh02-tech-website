@@ -50,7 +50,6 @@ const Footer = () => {
               <span className="foot__col-h mono">· PRODUCT</span>
               <a href="/#platform">Platform</a>
               <a href="/#tour">Live tour</a>
-              <a href="/#pricing">Pricing</a>
               <Link to="/product">Deep dive</Link>
             </div>
             <div className="foot__col">

@@ -7,7 +7,6 @@ import './Navbar.css';
 const LINKS = [
   { label: 'Platform', to: '/#platform' },
   { label: 'Live tour', to: '/#tour' },
-  { label: 'Pricing', to: '/#pricing' },
   { label: 'FAQ', to: '/#faq' },
   { label: 'Deep dive', to: '/product' },
 ];

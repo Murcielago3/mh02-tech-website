@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Loader from './components/Loader/Loader.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ClickSpark from './components/reactbits/ClickSpark.jsx';
 import Home from './pages/Home.jsx';
-import Product from './pages/Product.jsx';
-import Contact from './pages/Contact.jsx';
 import './App.css';
+
+const Product = lazy(() => import('./pages/Product.jsx'));
+const Contact = lazy(() => import('./pages/Contact.jsx'));
 
 import { ReactLenis } from 'lenis/react';
 
@@ -37,11 +38,13 @@ function App() {
       <ClickSpark sparkColor="#2f8a54" sparkCount={8} sparkRadius={20}>
         {playLoader && <Loader onComplete={handleComplete} />}
         <Navbar show={loaded} />
-        <Routes>
-          <Route path="/" element={<Home introDone={loaded} />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home introDone={loaded} />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Suspense>
         <Footer />
       </ClickSpark>
     </ReactLenis>

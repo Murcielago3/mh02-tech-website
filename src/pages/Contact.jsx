@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import { IconMail, IconPhone } from '../components/Icons.jsx';
 import Folder from '../components/reactbits/Folder.jsx';
@@ -10,21 +10,6 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
-
-const CONTACTS = [
-  {
-    name: 'Srujan Gadgil',
-    phone: '+91 97699 11588',
-    phoneLink: 'tel:+919769911588',
-    email: 'hello.tech@studiomh02.com',
-  },
-  {
-    name: 'Jaiwardhan Panwar',
-    phone: '+91 93724 41598',
-    phoneLink: 'tel:+919372441598',
-    email: 'hello.tech@studiomh02.com',
-  },
-];
 
 export default function Contact() {
   const lenis = useLenis();

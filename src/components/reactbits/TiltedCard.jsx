@@ -25,6 +25,10 @@ const TiltedCard = ({ children, max = 12, className = '', glare = true, ...rest 
   };
   const onLeave = () => { rx.set(0); ry.set(0); };
 
+  const glareBg = useTransform([gx, gy], ([x, y]) =>
+    `radial-gradient(circle at ${x}% ${y}%, rgba(122,240,176,0.12), transparent 55%)`
+  );
+
   return (
     <motion.div
       ref={ref}
@@ -43,9 +47,7 @@ const TiltedCard = ({ children, max = 12, className = '', glare = true, ...rest 
             inset: 0,
             borderRadius: 'inherit',
             pointerEvents: 'none',
-            background: useTransform([gx, gy], ([x, y]) =>
-              `radial-gradient(circle at ${x}% ${y}%, rgba(122,240,176,0.12), transparent 55%)`
-            ),
+            background: glareBg,
           }}
         />
       )}
