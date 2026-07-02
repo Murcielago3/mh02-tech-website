@@ -9,14 +9,15 @@
   display: flex;
   align-items: center;
   transition: background var(--transition-base), border-color var(--transition-base),
-    backdrop-filter var(--transition-base);
+    backdrop-filter var(--transition-base), box-shadow var(--transition-base);
   border-bottom: 1px solid transparent;
 }
 .nav--scrolled {
-  background: rgba(7, 13, 11, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom-color: var(--border);
+  box-shadow: 0 1px 24px rgba(16, 35, 26, 0.05);
 }
 
 .nav__inner {
@@ -38,20 +39,20 @@
 }
 .nav__mark {
   display: inline-flex;
-  color: var(--green-bright);
-  filter: drop-shadow(0 0 12px rgba(60, 227, 154, 0.35));
+  color: var(--green);
 }
 .nav__wordmark {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.05rem;
+  font-weight: 620;
+  font-size: 1.12rem;
   letter-spacing: 0.01em;
   color: var(--text);
 }
 .nav__wordmark span {
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-left: 0.35rem;
+  font-style: italic;
+  font-weight: 440;
+  color: var(--green);
+  margin-left: 0.3rem;
 }
 
 .nav__rule {
@@ -78,7 +79,7 @@
 }
 .nav__link:hover {
   color: var(--text);
-  background: var(--surface-2);
+  background: var(--green-pale);
 }
 
 /* ── CTA ────────────────────────────────────────────────────── */
@@ -89,16 +90,16 @@
   padding: 0.55rem 1.15rem;
   border-radius: var(--radius-full);
   background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
-  color: #052015;
+  color: #ffffff;
   font-size: 0.85rem;
   font-weight: 650;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(60, 227, 154, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 18px rgba(33, 122, 82, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 .nav__cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(60, 227, 154, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 28px rgba(33, 122, 82, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .nav__cta svg { transition: transform var(--transition-fast); }
 .nav__cta:hover svg { transform: translateX(3px); }
@@ -106,7 +107,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #052015;
+  background: #ffffff;
   animation: pulse-dot 2s ease-in-out infinite;
 }
 

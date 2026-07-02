@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
-  SpotlightCard, GradientText, DecryptedText, CountUp, TiltedCard, Magnet,
+  SpotlightCard, CountUp, TiltedCard, Magnet,
 } from '../components/reactbits';
 import {
   IconClock, IconReceipt, IconBell, IconChart, IconUsers, IconTerminal, IconArrow,
@@ -62,10 +62,10 @@ export default function Product() {
           >
             <span className="eyebrow">[ PLATFORM DEEP DIVE ]</span>
             <h1 className="prod-hero__title">
-              <GradientText speed={8} colors={['#3ce39a', '#2fbd7f', '#7ceec0', '#3ce39a']}>MH02<br />Dashboard</GradientText>
+              MH02 <em>Dashboard.</em>
             </h1>
             <p className="prod-hero__tag">
-              <DecryptedText text="The operating system for your studio." />
+              The operating system for your studio.
             </p>
             <p className="prod-hero__sub">
               Every module below shares one source of truth - so an approved timesheet becomes a
@@ -248,7 +248,7 @@ export default function Product() {
           <p className="prod-cta__sub">We tailor the platform to your workflows and deploy it on your own infrastructure.</p>
           <div className="prod-cta__btns">
             <Magnet padding={50} strength={0.3}>
-              <a href={DEMO_MAIL} className="btn btn--primary btn--lg">Book a demo <IconArrow width={18} height={18} /></a>
+              <a href={DEMO_MAIL} className="btn btn--light btn--lg">Book a demo <IconArrow width={18} height={18} /></a>
             </Magnet>
             <Link to="/#pricing" className="btn btn--ghost">See pricing</Link>
           </div>

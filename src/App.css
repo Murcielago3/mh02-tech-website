@@ -6,9 +6,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.6rem;
+  padding: 0.9rem 1.7rem;
   border-radius: var(--radius-full);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -16,7 +16,8 @@
   cursor: pointer;
   border: 1px solid transparent;
   transition: transform var(--transition-base), box-shadow var(--transition-base),
-    background var(--transition-base), border-color var(--transition-base);
+    background var(--transition-base), border-color var(--transition-base),
+    color var(--transition-base);
   position: relative;
   white-space: nowrap;
 }
@@ -25,27 +26,39 @@
 
 .btn--primary {
   background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
-  color: #052015;
-  box-shadow: 0 6px 28px rgba(60, 227, 154, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(33, 122, 82, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 44px rgba(60, 227, 154, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 38px rgba(33, 122, 82, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .btn--primary .rb-shiny { font-weight: 600; }
 
 .btn--ghost {
-  background: var(--surface);
+  background: #ffffff;
   color: var(--text);
   border-color: var(--border-strong);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 .btn--ghost:hover {
   border-color: var(--green-line);
   background: var(--green-pale);
   transform: translateY(-2px);
 }
+
+/* White button for use on dark-green "ink" panels */
+.btn--light {
+  background: #ffffff;
+  color: var(--green-deep);
+  box-shadow: 0 6px 24px rgba(6, 24, 16, 0.35);
+}
+.btn--light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 38px rgba(6, 24, 16, 0.45);
+}
+
 .btn__pulse {
   width: 7px;
   height: 7px;
@@ -54,7 +67,7 @@
   box-shadow: 0 0 10px var(--green-bright);
   animation: pulse-dot 2s ease-in-out infinite;
 }
-.btn--lg { padding: 1.05rem 2rem; font-size: 1rem; }
+.btn--lg { padding: 1.05rem 2.1rem; font-size: 1rem; }
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
@@ -66,7 +79,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--green-bright);
+  color: var(--green);
   background: var(--green-pale);
   border: 1px solid var(--green-line);
   padding: 0.2rem 0.55rem;
@@ -84,38 +97,38 @@
   flex-shrink: 0;
 }
 
-/* ─── Terminal panel (reused) ────────────────────────────────── */
+/* ─── Terminal panel (dark contrast piece on light pages) ───── */
 .term {
-  border: 1px solid var(--border-strong);
+  border: 1px solid rgba(242, 248, 244, 0.12);
   border-radius: var(--radius-md);
-  background: #0b1512;
+  background: #0a271b;
   overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 60px -25px var(--green-glow);
+  box-shadow: 0 30px 60px -20px rgba(13, 53, 36, 0.5);
 }
 .term__bar {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 0.85rem;
-  border-bottom: 1px solid var(--border);
-  background: #0e1a16;
+  border-bottom: 1px solid rgba(242, 248, 244, 0.1);
+  background: #0d3021;
 }
 .term__bar i {
   width: 9px; height: 9px; border-radius: 50%;
-  background: #1e3229;
+  background: #1d4a35;
 }
-.term__bar i:first-child { background: var(--green); }
+.term__bar i:first-child { background: #3fce8d; }
 .term__bar span {
   margin-left: 0.5rem;
   font-size: 0.7rem;
-  color: var(--text-muted);
+  color: #7ea895;
 }
 .term__body {
   margin: 0;
   padding: 1rem 1.1rem;
   font-size: 0.78rem;
   line-height: 1.85;
-  color: var(--green-bright);
+  color: #6fe0ac;
   white-space: pre;
   overflow-x: auto;
 }

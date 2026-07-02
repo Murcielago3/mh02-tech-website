@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { useRef, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
-import {
-  DotGrid, SpotlightCard, DecryptedText, ShinyText, CountUp,
-  RotatingText, Magnet,
-} from '../components/reactbits';
+import { DotGrid, SpotlightCard, Magnet } from '../components/reactbits';
 import {
   IconClock, IconReceipt, IconBell, IconChart, IconUsers, IconTerminal,
   IconShield, IconBolt, IconLayers, IconArrow, IconDatabase,
@@ -113,6 +110,31 @@ const FAQS = [
   },
 ];
 
+/* ─── Scroll-linked marquee: glides right-to-left as you scroll ─ */
+const MARQUEE_WORDS = ['Projects', 'Clients', 'Timesheets', 'Invoicing', 'Estimation', 'HR', 'Reports', 'Slack Automation'];
+
+const ScrollMarquee = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ['4%', '-46%']);
+
+  return (
+    <div className="marquee" ref={ref} aria-hidden="true">
+      <motion.div className="marquee__track" style={{ x }}>
+        {[...MARQUEE_WORDS, ...MARQUEE_WORDS].map((t, i) => (
+          <span className={`marquee__item ${i % 2 ? 'marquee__item--outline' : ''}`} key={i}>
+            {t}
+            <i className="marquee__dot" />
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 /* ─── FAQ item ───────────────────────────────────────────────── */
 const FaqItem = ({ q, a, open, onToggle }) => (
   <div className={`faq__item ${open ? 'faq__item--open' : ''}`}>
@@ -208,7 +230,7 @@ export default function Home({ introDone = true }) {
           transition={{ duration: 1.5, ease: 'easeOut' }}
           style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
-          <DotGrid className="hero__grid" baseColor="#16261f" activeColor="#3ce39a" dotSize={3} />
+          <DotGrid className="hero__grid" baseColor="#c5d8cd" activeColor="#217a52" dotSize={3} />
         </motion.div>
         <div className="hero__fade" />
 
@@ -219,68 +241,35 @@ export default function Home({ introDone = true }) {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
           <div className="hero__badge mono">
-            <i /> MH02 DASHBOARD · THE OPERATIONS PLATFORM FOR STUDIOS
+            <i /> MH02 DASHBOARD · FOR STUDIOS & AGENCIES
           </div>
 
           <h1 className="hero__title">
-            <DecryptedText text="Run your entire studio" as="span" className="hero__title-line" />
-            <span className="hero__title-line">
-              without the{' '}
-              <RotatingText
-                className="hero__rotor"
-                words={['spreadsheets.', 'chasing.', 'month-end panic.', 'busywork.']}
-              />
-            </span>
+            The operating system <em>your studio deserves.</em>
           </h1>
 
           <p className="hero__sub">
-            Projects, clients, timesheets, invoicing, HR and reporting - one dashboard your whole
-            team actually opens, with Slack automation that chases people
-            <span className="hero__sub-accent"> so you never have to.</span>
+            Projects, clients, timesheets, invoicing and reporting in one dashboard - with Slack
+            automation that chases people so you never have to.
           </p>
 
           <div className="hero__cta">
             <Magnet padding={50} strength={0.3}>
               <a href={DEMO_MAIL} className="btn btn--primary">
-                <ShinyText text="Book a demo" speed={5} />
-                <IconArrow width={18} height={18} />
+                Book a demo <IconArrow width={18} height={18} />
               </a>
             </Magnet>
             <a href="#tour" className="btn btn--ghost">
               <span className="btn__pulse" /> Try the live tour
             </a>
           </div>
-
-          <div className="hero__spec">
-            {[
-              ['MODULES', '8', ''],
-              ['MONTH-END', '5', 'min'],
-              ['MISSED REMINDERS', '0', ''],
-              ['REPORTS COMPILED BY HAND', '0', ''],
-            ].map(([label, val, unit]) => (
-              <div className="hero__spec-item" key={label}>
-                <span className="hero__spec-val mono">{val}<i>{unit}</i></span>
-                <span className="hero__spec-label mono">{label}</span>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         <div className="hero__scroll mono">SCROLL ↓</div>
       </section>
 
-      {/* ──────────────────────── MARQUEE ─────────────────────── */}
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee__track">
-          {[...Array(2)].flatMap((_, r) =>
-            ['PROJECTS', 'CLIENTS', 'TIMESHEETS', 'INVOICING', 'ESTIMATION', 'HR', 'REPORTS', 'SLACK AUTOMATION', 'APPROVALS', 'EXPENSES'].map((t) => (
-              <span className="marquee__item mono" key={`${r}-${t}`}>
-                {t}<i className="marquee__dot" />
-              </span>
-            ))
-          )}
-        </div>
-      </div>
+      {/* ──────────── SCROLL MARQUEE (right below hero) ────────── */}
+      <ScrollMarquee />
 
       {/* ───────────────────────── PAINS ──────────────────────── */}
       <section className="section pains" id="why">
@@ -306,11 +295,11 @@ export default function Home({ introDone = true }) {
       </section>
 
       {/* ──────────────────────── PLATFORM ────────────────────── */}
-      <section className="section" id="platform">
+      <section className="section platform" id="platform">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 01 - PLATFORM ]</span>
-            <h2 className="section-title">Everything your studio runs on,<br />in one place.</h2>
+            <h2 className="section-title">Everything your studio runs on,<br /><em>in one place.</em></h2>
             <p className="section__lead">
               Eight modules that share one source of truth - so an approved timesheet becomes a
               project stat, an invoice line and a Slack notification without anyone touching it.
@@ -322,7 +311,7 @@ export default function Home({ introDone = true }) {
               const Icon = c.icon;
               return (
                 <motion.div key={c.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: (i % 3) * 0.08 }}>
-                  <SpotlightCard className="cap-card" spotlightColor="rgba(60,227,154,0.12)">
+                  <SpotlightCard className="cap-card" spotlightColor="rgba(33,122,82,0.08)">
                     <div className="cap-card__top">
                       <span className="cap-card__icon"><Icon /></span>
                       <span className="cap-card__n mono">{c.n}</span>
@@ -354,8 +343,8 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="autom__panel" {...fadeUp}>
             <div className="autom__copy">
-              <span className="eyebrow">[ 03 - AUTOMATION ]</span>
-              <h2 className="section-title">The cadence<br />runs itself.</h2>
+              <span className="autom__eyebrow mono">[ 03 - AUTOMATION ]</span>
+              <h2 className="autom__title">The cadence <em>runs itself.</em></h2>
               <p className="autom__lead">
                 MH02 Dashboard doesn&apos;t just store your operations data - it acts on it. Reminders,
                 reports and notifications land in Slack on schedule, every time, without a human
@@ -398,7 +387,7 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 04 - BUILT TO BE TRUSTED ]</span>
-            <h2 className="section-title">Your ops data is the business.<br />We treat it that way.</h2>
+            <h2 className="section-title">Your ops data is the business.<br /><em>We treat it that way.</em></h2>
           </motion.div>
           <div className="trust__grid">
             {[
@@ -427,7 +416,7 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 05 - GETTING STARTED ]</span>
-            <h2 className="section-title">Three steps. One week.</h2>
+            <h2 className="section-title">Three steps. <em>One week.</em></h2>
           </motion.div>
           <div className="proc">
             <div className="proc__line" />
@@ -447,7 +436,7 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 06 - PRICING ]</span>
-            <h2 className="section-title">Plans that scale with the studio.</h2>
+            <h2 className="section-title">Plans that scale <em>with the studio.</em></h2>
             <p className="section__lead">
               Pricing is per deployment, not per surprise. Tell us your team size and we&apos;ll quote
               in one business day.
@@ -469,7 +458,7 @@ export default function Home({ introDone = true }) {
                 </ul>
                 <a
                   href={`mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20-%20${encodeURIComponent(p.name)}`}
-                  className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'} plan__cta`}
+                  className={`btn ${p.featured ? 'btn--light' : 'btn--ghost'} plan__cta`}
                 >
                   {p.cta} <IconArrow width={16} height={16} />
                 </a>
@@ -484,7 +473,7 @@ export default function Home({ introDone = true }) {
         <div className="container faq__wrap">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 07 - FAQ ]</span>
-            <h2 className="section-title">Questions studios ask us.</h2>
+            <h2 className="section-title">Questions studios <em>ask us.</em></h2>
           </motion.div>
           <motion.div className="faq__list" {...fadeUp}>
             {FAQS.map((f, i) => (
@@ -502,13 +491,13 @@ export default function Home({ introDone = true }) {
       {/* ───────────────────────── CONTACT ────────────────────── */}
       <section className="section contact" id="contact">
         <motion.div className="contact__panel container" {...fadeUp}>
-          <span className="eyebrow">[ GET STARTED ]</span>
+          <span className="contact__eyebrow mono">[ GET STARTED ]</span>
           <h2 className="contact__title">
-            Give your studio its <span className="text-grad">operating system.</span>
+            Give your studio its <em>operating system.</em>
           </h2>
           <p className="contact__sub">A 30-minute demo on your workflows. We reply within one business day.</p>
           <Magnet padding={50} strength={0.3}>
-            <a href={DEMO_MAIL} className="btn btn--primary btn--lg">
+            <a href={DEMO_MAIL} className="btn btn--light btn--lg">
               Book a demo <IconArrow width={18} height={18} />
             </a>
           </Magnet>

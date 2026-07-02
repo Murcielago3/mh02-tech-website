@@ -47,7 +47,7 @@ const Navbar = ({ show = true }) => {
           <span className="nav__mark" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
               <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
-              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#052015" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#ffffff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
           </span>
           <span className="nav__wordmark">

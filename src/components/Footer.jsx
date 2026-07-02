@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="foot__mark" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
               <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
-              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#052015" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#0d3524" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
           </div>
           <div className="foot__ident-body">

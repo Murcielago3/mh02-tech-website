@@ -1,16 +1,16 @@
-/* ═══════════════════════════ Footer ═════════════════════════ */
+/* ═══════════════ Footer - deep green ink panel ══════════════ */
 .foot {
   position: relative;
-  border-top: 1px solid var(--border);
-  background: var(--bg-2);
+  background: var(--green-ink);
+  color: var(--ink-text);
   overflow: hidden;
 }
 .foot::before {
   content: '';
   position: absolute;
-  top: -1px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--green-line) 50%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(242, 248, 244, 0.25) 50%, transparent);
 }
 
 .foot__inner {
@@ -33,21 +33,20 @@
 }
 .foot__mark {
   display: inline-flex;
-  color: var(--green-bright);
-  filter: drop-shadow(0 0 14px rgba(60, 227, 154, 0.3));
+  color: #ffffff;
 }
 .foot__ident-body { display: flex; flex-direction: column; gap: 0.2rem; }
 .foot__ident-name {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 1rem;
   letter-spacing: 0.04em;
-  color: var(--text);
+  color: var(--ink-text);
 }
 .foot__ident-sub {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
-  color: var(--text-muted);
+  color: var(--ink-text-secondary);
 }
 
 /* ── Giant CTA ──────────────────────────────────────────────── */
@@ -61,21 +60,22 @@
 .foot__cta-lead {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
-  color: var(--green-bright);
+  color: #6fe0ac;
 }
 .foot__cta-line {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
+  font-style: italic;
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-  letter-spacing: -0.02em;
-  color: var(--text);
+  letter-spacing: -0.01em;
+  color: var(--ink-text);
   transition: color var(--transition-base);
 }
 .foot__cta-line svg { transition: transform var(--transition-base); flex-shrink: 0; }
-.foot__cta:hover .foot__cta-line { color: var(--green-bright); }
+.foot__cta:hover .foot__cta-line { color: #6fe0ac; }
 .foot__cta:hover .foot__cta-line svg { transform: translateX(8px); }
 
 /* ── Nav columns ────────────────────────────────────────────── */
@@ -90,27 +90,26 @@
 .foot__col-h {
   font-size: 0.64rem;
   letter-spacing: 0.18em;
-  color: var(--green-bright);
+  color: #6fe0ac;
   margin-bottom: 0.35rem;
 }
 .foot__col a, .foot__col span {
-  color: var(--text-secondary);
+  color: var(--ink-text-secondary);
   text-decoration: none;
   font-size: 0.88rem;
 }
 .foot__col a { transition: color var(--transition-fast); }
-.foot__col a:hover { color: var(--text); }
+.foot__col a:hover { color: #ffffff; }
 .foot__status {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.78rem !important;
-  color: var(--text-muted) !important;
 }
 .foot__status i {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--green-bright);
-  box-shadow: 0 0 8px var(--green-bright);
+  background: #3fce8d;
+  box-shadow: 0 0 8px #3fce8d;
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
@@ -122,24 +121,25 @@
   justify-content: space-between;
   gap: 1rem;
   padding-top: var(--space-lg);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--ink-border);
   font-size: 0.66rem;
   letter-spacing: 0.1em;
-  color: var(--text-faint);
+  color: rgba(185, 207, 194, 0.55);
 }
 
 /* ── Ghost wordmark ─────────────────────────────────────────── */
 .foot__ghost {
   position: absolute;
-  bottom: -0.28em;
-  right: -0.03em;
+  bottom: -0.3em;
+  right: -0.02em;
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 700;
+  font-style: italic;
   font-size: clamp(8rem, 24vw, 20rem);
   line-height: 1;
   letter-spacing: -0.04em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(163, 196, 180, 0.07);
+  -webkit-text-stroke: 1px rgba(242, 248, 244, 0.07);
   pointer-events: none;
   user-select: none;
 }
