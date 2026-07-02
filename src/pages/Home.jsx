@@ -23,19 +23,19 @@ const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
 
 const PAINS = [
   {
-    title: 'The spreadsheet sprawl',
-    desc: 'Client lists in Sheets, timesheets in forms, invoices in Word. Four sources of truth means zero sources of truth.',
-    fix: 'One platform. One record for every client, project, hour and rupee.',
+    title: 'Everything lives somewhere different',
+    desc: 'Clients in a Google Sheet, timesheets in a form, invoices in someone’s Word template. Nobody’s quite sure which copy is the real one anymore.',
+    fix: 'One place for clients, projects, hours and money — and only one copy of each.',
   },
   {
-    title: 'The chasing game',
-    desc: 'Ops spends Friday chasing timesheets, month-end assembling reports and reminding approvers to approve.',
-    fix: 'Automatic Slack nudges tag exactly the people who owe an action.',
+    title: 'Someone is always chasing someone',
+    desc: 'Friday goes to chasing timesheets. Month-end goes to poking the managers who still haven’t approved anything.',
+    fix: 'Slack does the poking now, and it tags the one person who’s actually holding things up.',
   },
   {
-    title: 'The invisible month',
-    desc: 'Leadership finds out how the month went weeks after it ended - if anyone had time to compile it at all.',
-    fix: 'A full month-in-review lands in Slack on the 1st, at 09:00, untouched by human hands.',
+    title: 'You hear how the month went in the next month',
+    desc: 'By the time someone’s pulled the numbers together, you’re two weeks into the next month — if anyone had time to pull them at all.',
+    fix: 'A plain summary of last month shows up in Slack on the 1st. You didn’t ask for it; it just arrives.',
   },
 ];
 
