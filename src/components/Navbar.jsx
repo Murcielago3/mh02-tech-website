@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Logo from './Logo.jsx';
-import Magnet from './reactbits/Magnet.jsx';
 import './Navbar.css';
 
 const LINKS = [
-  { label: 'Capabilities', to: '/#capabilities' },
-  { label: 'Process', to: '/#process' },
-  { label: 'Product', to: '/product' },
-  { label: 'Stack', to: '/#stack' },
+  { label: 'Work', to: '/#work', },
+  { label: 'Product', to: '/product', },
+  { label: 'Approach', to: '/#approach', },
+  { label: 'Contact', to: '/#contact', },
 ];
 
 const Navbar = ({ show = true }) => {
@@ -18,7 +16,7 @@ const Navbar = ({ show = true }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -39,40 +37,43 @@ const Navbar = ({ show = true }) => {
   return (
     <motion.header
       className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
-      initial={{ opacity: 0, y: -12 }}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: -12 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: -14 }}
+      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="nav__inner container">
-        <Link to="/" className="nav__brand" aria-label="STUDIOMH02 Tech home">
-          <Logo size={26} />
-          <span className="nav__brand-text">
-            STUDIO<span className="nav__brand-accent">MH02</span>
-            <span className="nav__brand-div">/</span>
-            <span className="nav__brand-tech">Tech</span>
+      <div className="nav__inner">
+        <Link to="/" className="nav__brand">
+          <span className="nav__mark" aria-hidden="true">◪</span>
+          <span className="nav__wordmark">
+            STUDIO<span>MH02</span>
           </span>
         </Link>
+
+        <span className="nav__rule" aria-hidden="true" />
 
         <nav className="nav__links">
           {LINKS.map((l) =>
             l.to.startsWith('/#') ? (
               <a key={l.label} href={l.to} className="nav__link" onClick={(e) => handleAnchor(e, l.to)}>
-                {l.label}
+                <i className="nav__link-n">{l.n}</i>
+                <span>{l.label}</span>
               </a>
             ) : (
               <Link key={l.label} to={l.to} className="nav__link">
-                {l.label}
+                <i className="nav__link-n">{l.n}</i>
+                <span>{l.label}</span>
               </Link>
             )
           )}
         </nav>
 
-        <Magnet padding={40} strength={0.35}>
-          <a href="/#contact" className="nav__cta" onClick={(e) => handleAnchor(e, '/#contact')}>
-            <span className="nav__cta-dot" />
-            Start a project
-          </a>
-        </Magnet>
+        <a href="mailto:xyz@studiomh02.com" className="nav__cta">
+          <span className="nav__cta-dot" />
+          Book a call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       </div>
     </motion.header>
   );

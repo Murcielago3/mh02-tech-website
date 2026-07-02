@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import IntroAnimation from './components/IntroAnimation/IntroAnimation.jsx';
+import Loader from './components/Loader/Loader.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ClickSpark from './components/reactbits/ClickSpark.jsx';
@@ -8,37 +8,41 @@ import Home from './pages/Home.jsx';
 import Product from './pages/Product.jsx';
 import './App.css';
 
+import { ReactLenis } from 'lenis/react';
+
 function App() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const seen =
+    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('mh02-intro') === '1';
 
-  // Always play intro on initial load, regardless of which page they landed on
-  const [isPlayingIntro, setIsPlayingIntro] = useState(true);
-  const [introDone, setIntroDone] = useState(false);
+  const [loaded, setLoaded] = useState(seen || !isHome);
+  const playLoader = isHome && !seen;
 
   useEffect(() => {
-    if (!location.hash) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    if (!location.hash) {
+      try { window.scrollTo({ top: 0, behavior: 'instant' }); }
+      catch { window.scrollTo(0, 0); }
+    }
   }, [location.pathname]);
 
-  const handleReveal = () => {
-    setIntroDone(true);
-  };
-
   const handleComplete = () => {
-    // Give IntroAnimation a moment to finish its exit transition, then unmount it
-    setTimeout(() => setIsPlayingIntro(false), 500);
+    try { sessionStorage.setItem('mh02-intro', '1'); } catch { /* ignore */ }
+    setLoaded(true);
   };
 
   return (
-    <ClickSpark sparkColor="#2f8a54" sparkCount={9} sparkRadius={22}>
-      {isPlayingIntro && <IntroAnimation onReveal={handleReveal} onComplete={handleComplete} />}
-      <Navbar show={introDone} />
-      <Routes>
-        <Route path="/" element={<Home introDone={introDone} />} />
-        <Route path="/product" element={<Product />} />
-      </Routes>
-      <Footer />
-    </ClickSpark>
+    <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
+      <ClickSpark sparkColor="#2f8a54" sparkCount={8} sparkRadius={20}>
+        {playLoader && <Loader onComplete={handleComplete} />}
+        <Navbar show={loaded} />
+        <Routes>
+          <Route path="/" element={<Home ready={loaded} />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
+        <Footer />
+      </ClickSpark>
+    </ReactLenis>
   );
 }
 

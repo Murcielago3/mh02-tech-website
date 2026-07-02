@@ -1,5 +1,8 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import AppFrame from '../components/AppFrame/AppFrame.jsx';
+import { SCREENS } from '../data/screens.js';
 import {
   LetterGlitch, SpotlightCard, GradientText, DecryptedText, CountUp, TiltedCard, Magnet,
 } from '../components/reactbits';
@@ -44,6 +47,90 @@ const SCHEDULE = [
   { when: '1st · 09:00', title: 'Monthly report', desc: 'Previous-month Block-Kit summary assembled and posted to management.', channel: '#management' },
   { when: 'INSTANT', title: 'Event notifications', desc: 'Submissions, approvals and rejections fire the moment they happen via background tasks.', channel: 'both' },
 ];
+
+const rise = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1], delay },
+});
+
+/* ─── Playtest section (full AppFrame + syncing side copy) ─── */
+const PlaytestSection = () => {
+  const [activeId, setActiveId] = useState(SCREENS[0].id);
+  const active = SCREENS.find((s) => s.id === activeId) || SCREENS[0];
+
+  return (
+    <section className="section playtest" id="explore">
+      <div className="container">
+        <motion.div className="section__head" {...rise()}>
+          <div className="head-strip mono">
+            <span>{'■'}</span><span>01</span><span>/</span><span>PLAY IT LIVE</span>
+          </div>
+          <h2 className="section-title">
+            The whole app,<br />
+            <em>at your fingertips.</em>
+          </h2>
+          <p className="section__lead">
+            Click any section in the sidebar. Or press <b>PLAY TOUR</b> for a walkthrough. Hover
+            any green dot on the screen to see what it does.
+          </p>
+        </motion.div>
+
+        <motion.div className="playtest__grid" {...rise(0.1)}>
+          <div className="playtest__copy">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="playtest__inner"
+              >
+                <span className="playtest__eyebrow mono">
+                  <i /> NOW SHOWING · {active.label.toUpperCase()}
+                </span>
+                <h3 className="playtest__title">{active.title}</h3>
+                <p className="playtest__desc">{active.caption}</p>
+
+                <div className="playtest__meta mono">
+                  <span>SCREEN · {String(SCREENS.findIndex(s => s.id === active.id) + 1).padStart(2, '0')}/{String(SCREENS.length).padStart(2, '0')}</span>
+                  <span>{active.url}</span>
+                </div>
+
+                {active.hotspots?.length > 0 && (
+                  <div className="playtest__hints">
+                    <span className="playtest__hints-h mono">◈ HIGHLIGHTS</span>
+                    <ul>
+                      {active.hotspots.map((h, i) => (
+                        <li key={i}>
+                          <span>{h.title}</span>
+                          <em>{h.note}</em>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="playtest__frame">
+            <AppFrame
+              screens={SCREENS}
+              activeId={activeId}
+              onChange={setActiveId}
+              showTour
+              showHotspots
+              autoStart={false}
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default function Product() {
   return (
@@ -163,37 +250,8 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ────────────────────── ARCHITECTURE ──────────────────── */}
-      <section className="section prod-arch" id="architecture">
-        <div className="container">
-          <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 02 - ARCHITECTURE ]</span>
-            <h2 className="section-title">Async by design.</h2>
-            <p className="section__lead">
-              Requests stay fast because the slow work - reminders, reports, notifications - runs
-              off the request path on a scheduled worker fleet.
-            </p>
-          </motion.div>
-
-          <motion.div className="arch" {...fadeUp}>
-            {ARCH.map((s, i) => (
-              <div className="arch__cell" key={i}>
-                <div className={`arch__stage ${s.stage.length > 1 ? 'arch__stage--stack' : ''}`}>
-                  {s.stage.map((n) => (
-                    <div className="arch__node" key={n.label}>
-                      <span className="arch__node-label">{n.label}</span>
-                      <span className="arch__node-sub mono">{n.sub}</span>
-                    </div>
-                  ))}
-                </div>
-                {i < ARCH.length - 1 && (
-                  <div className="arch__link"><span className="arch__pulse" /></div>
-                )}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* ═══════════════════════════ PLAYTEST ══════════════════════ */}
+      <PlaytestSection />
 
       {/* ──────────────────────── SCHEDULE ────────────────────── */}
       <section className="section">

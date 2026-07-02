@@ -1,0 +1,118 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Corner coordinate tags ─────────────────────────────────── */
+.loader__coord {
+  position: absolute;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  padding: 1rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.loader__coord b {
+  color: var(--green);
+  font-weight: 400;
+  font-size: 1rem;
+}
+.loader__coord--tl { top: 0; left: 0; }
+.loader__coord--tr { top: 0; right: 0; }
+.loader__coord--bl { bottom: 0; left: 0; }
+.loader__coord--br { bottom: 0; right: 0; }
+
+/* ── Center block ───────────────────────────────────────────── */
+.loader__center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loader__brackets {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.loader__bracket {
+  color: var(--green);
+  font-weight: 300;
+  font-size: 1.2em;
+  line-height: 0.9;
+}
+.loader__brand {
+  min-width: 11ch;
+  text-align: center;
+  font-variant-ligatures: none;
+}
+
+/* ── Ruler / progress ───────────────────────────────────────── */
+.loader__ruler {
+  position: relative;
+  width: min(360px, 70vw);
+  height: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--text);
+}
+.loader__tick {
+  width: 1px;
+  height: 6px;
+  background: var(--text-muted);
+}
+.loader__tick--major {
+  height: 12px;
+  background: var(--text);
+}
+.loader__ruler-fill {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--green);
+  transition: width 60ms linear;
+  box-shadow: 0 0 10px rgba(40, 117, 71, 0.35);
+}
+
+.loader__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+.loader__count {
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Shutter exit ───────────────────────────────────────────── */
+.loader__shutter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 3;
+  background: var(--green);
+}
+.loader__shutter--top { top: 0; }
+.loader__shutter--bot { bottom: 0; }
