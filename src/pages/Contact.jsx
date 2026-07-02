@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { IconMail, IconPhone } from '../components/Icons.jsx';
 import Folder from '../components/reactbits/Folder.jsx';
-import GradientBlinds from '../components/reactbits/GradientBlinds.jsx';
 import './Contact.css';
 
 const fadeUp = {
@@ -36,23 +35,7 @@ export default function Contact() {
   }, [lenis]);
 
   return (
-    <main className="contact-page light-mode-bg">
-      <div className="contact__bg">
-        <GradientBlinds
-          gradientColors={['#eef7f2', '#ffffff']}
-          angle={149}
-          noise={1}
-          blindCount={57}
-          blindMinWidth={50}
-          spotlightRadius={0.55}
-          spotlightSoftness={1}
-          spotlightOpacity={1}
-          mouseDampening={0.51}
-          distortAmount={0}
-          shineDirection="left"
-          mixBlendMode="normal"
-        />
-      </div>
+    <main className="contact-page">
       <div className="contact__wrap">
         <motion.div className="contact__header" {...fadeUp}>
           <h1 className="contact__title">Talk to <em>the team.</em></h1>

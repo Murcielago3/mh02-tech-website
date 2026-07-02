@@ -1,29 +1,11 @@
 /* ────────────────────── CONTACT PAGE ────────────────────── */
 .contact-page {
-  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-xl) var(--space-4xl);
-  overflow: hidden;
-}
-
-.contact__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.light-mode-bg .contact__title {
-  color: #111;
-}
-
-.light-mode-bg .contact__lead {
-  color: #444;
+  background: var(--bg);
 }
 
 .contact__wrap {

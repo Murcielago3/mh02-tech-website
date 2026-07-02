@@ -36,7 +36,8 @@ const GradientBlinds = ({
   spotlightOpacity = 1,
   distortAmount = 0,
   shineDirection = 'left',
-  mixBlendMode = 'lighten'
+  mixBlendMode = 'normal',
+  lightMode = false
 }) => {
   const containerRef = useRef(null);
   const rafRef = useRef(null);
@@ -95,6 +96,7 @@ uniform float uSpotlightOpacity;
 uniform float uMirror;
 uniform float uDistort;
 uniform float uShineFlip;
+uniform float uLightMode;
 uniform vec3  uColor0;
 uniform vec3  uColor1;
 uniform vec3  uColor2;
@@ -174,10 +176,21 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
   vec3 cir = vec3(spot);
   float stripe = fract(uvMod.x * max(uBlindCount, 1.0));
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
-    vec3 ran = vec3(stripe);
+  
+  vec3 col;
+  if (uLightMode > 0.5) {
+      // Light mode: white background, gradient spotlight, soft shadows
+      vec3 bg = vec3(1.0);
+      col = mix(bg, base, clamp(spot, 0.0, 1.0));
+      col -= stripe * 0.08; // very soft shadow
+  } else {
+      // Dark mode (original): gradient background, white spotlight, hard shadows
+      vec3 cir = vec3(spot);
+      vec3 ran = vec3(stripe);
+      col = cir + base - ran;
+  }
 
-    vec3 col = cir + base - ran;
-    col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
+  col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
 
     fragColor = vec4(col, 1.0);
 }
@@ -205,6 +218,7 @@ void main() {
       uMirror: { value: mirrorGradient ? 1 : 0 },
       uDistort: { value: distortAmount },
       uShineFlip: { value: shineDirection === 'right' ? 1 : 0 },
+      uLightMode: { value: lightMode ? 1 : 0 },
       uColor0: { value: colorArr[0] },
       uColor1: { value: colorArr[1] },
       uColor2: { value: colorArr[2] },
@@ -329,7 +343,8 @@ void main() {
     spotlightSoftness,
     spotlightOpacity,
     distortAmount,
-    shineDirection
+    shineDirection,
+    lightMode
   ]);
 
   return (
