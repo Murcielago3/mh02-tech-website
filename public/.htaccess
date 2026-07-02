@@ -1,0 +1,19 @@
+# Serve JS with the correct MIME type (fixes "module script text/plain" errors)
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+</IfModule>
+
+# React Router (BrowserRouter) client-side routing fallback
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Don't rewrite real files or directories (JS, CSS, images, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else goes to index.html so React Router can handle the path
+  RewriteRule ^ index.html [L]
+</IfModule>
