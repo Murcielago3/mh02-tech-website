@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-xl) var(--space-4xl);
+  padding: calc(var(--navbar-height) + var(--space-2xl)) var(--space-xl) var(--space-4xl);
   background: var(--bg);
 }
 
@@ -124,15 +124,20 @@
   .contact-page__title {
     font-size: clamp(2rem, 8vw, 2.5rem);
   }
-  
+
+  .contact__wrap { gap: var(--space-2xl); }
+
+  /* Papers stack upward on mobile (see Folder.css), so give them headroom
+     instead of scaling the whole widget down */
   .contact__folder-wrap {
-    transform: scale(0.85);
-    margin-top: 20px;
+    margin-top: 200px;
+    height: auto;
+    padding-bottom: var(--space-xl);
   }
-}
-@media (max-width: 480px) {
-  .contact__folder-wrap {
-    transform: scale(0.7);
-    margin-top: 0px;
-  }
+
+  .contact-paper { padding: 20px 22px; }
+  .cp-name { font-size: 19px; }
+  .cp-divider { margin: 14px 0; }
+  .cp-links { gap: 10px; }
+  .cp-links a { font-size: 13.5px; gap: 9px; }
 }

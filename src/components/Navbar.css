@@ -131,7 +131,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: max-content;
-    max-width: calc(100vw - 40px);
+    max-width: calc(100vw - 24px);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 16px 40px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.5);
@@ -142,4 +142,5 @@
     scrollbar-width: none;
   }
   .nav__links::-webkit-scrollbar { display: none; }
+  .nav__link { padding: 0.45rem 0.65rem; font-size: 0.78rem; white-space: nowrap; }
 }

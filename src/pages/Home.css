@@ -596,7 +596,8 @@
 }
 @media (max-width: 860px) {
   .section { padding: var(--space-4xl) 0; }
-  .pains__grid, .cap-grid, .trust__grid, .pricing__grid { grid-template-columns: 1fr; }
+  .pains__grid, .cap-grid, .trust__grid, .pricing__grid, .autom__grid { grid-template-columns: 1fr; }
+  .autom__grid { gap: var(--space-md); }
   .proc { grid-template-columns: 1fr; gap: var(--space-lg); }
   .proc__line { display: none; }
   .faq__wrap { grid-template-columns: 1fr; }
@@ -604,14 +605,34 @@
 }
 @media (max-width: 768px) {
   .hero { padding-top: calc(var(--navbar-height) + var(--space-xl)); padding-bottom: var(--space-2xl); }
-  .hero__btns { flex-direction: column; width: 100%; gap: 0.8rem; }
-  .hero__btns .btn { width: 100%; justify-content: center; }
-  
+  .hero__title { font-size: clamp(2.4rem, 11vw, 3rem); }
+  .hero__sub { font-size: 1.02rem; padding: 0 0.4rem; }
+  .hero__cta { flex-direction: column; width: 100%; gap: 0.8rem; }
+  .hero__cta .btn { width: 100%; justify-content: center; }
+  .hero__cta > * { width: 100%; }
+
+  .marquee { padding: 1.1rem 0; }
+  .marquee__item { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .marquee__item span { margin: 0 1.4rem; }
+
+  .section-title { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
+  .section__head { gap: 0.8rem; margin-bottom: var(--space-2xl); }
+
   .cap-card, .pain-card, .trust-card, .pricing__tier {
     padding: 1.2rem !important;
   }
-  
-  .contact__title { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .contact__content > div[style] { flex-direction: column; gap: 0.8rem !important; }
+  .plan { padding: 1.4rem; }
+
+  .proc__title { white-space: normal !important; }
+
+  .tour__title { font-size: 1.45rem; }
+
+  .faq__q { font-size: 0.96rem; gap: 0.9rem; }
+
+  .contact { padding-left: var(--space-md); padding-right: var(--space-md); }
+  .contact__panel { padding: var(--space-2xl) var(--space-lg) !important; }
+  .contact__title { font-size: clamp(1.9rem, 9vw, 2.5rem); }
+  .contact__content > div[style] { flex-direction: column; gap: 0.8rem !important; width: 100%; }
   .contact__content > div[style] .btn { width: 100%; justify-content: center; }
+  .contact__content > div[style] > * { width: 100%; }
 }

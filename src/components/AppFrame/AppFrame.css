@@ -355,7 +355,10 @@
   .appfr__url { min-width: unset; }
 }
 @media (max-width: 640px) {
+  .appfr__stage { grid-template-columns: 52px 1fr; height: 440px; }
+  .appfr__side { padding: 0.7rem 0.3rem; }
   .appfr__img { min-height: 260px; max-height: 420px; }
   .appfr__chrome { padding: 0.5rem 0.7rem; }
+  .appfr__url { max-width: 180px; }
   .appfr__tour .mono { display: none; }
 }
