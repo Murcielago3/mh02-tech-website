@@ -9,13 +9,13 @@ export const SCREENS = [
     icon: '▦',
     url: 'mh02.app/dashboard',
     image: '/preview/admin-dash.png',
-    title: 'The Studio Overview.',
+    title: 'Your morning dashboard.',
     caption:
-      'A calm home screen your team opens every morning. What is pending, what needs a decision, what just landed - all in one place.',
+      'Open this first thing. You can see what\'s pending, who needs to do what, and what just happened — without asking anyone.',
     hotspots: [
-      { x: 26, y: 26, title: 'Live KPIs',       note: 'Studio-wide numbers, always current.' },
-      { x: 55, y: 62, title: 'Activity feed',   note: 'Everything that just ran, in one stream.' },
-      { x: 82, y: 24, title: 'Team snapshot',   note: 'Who is on, who is off, at a glance.' },
+      { x: 26, y: 26, title: 'Live numbers',       note: 'Studio-wide stats, always up to date.' },
+      { x: 55, y: 62, title: 'Activity feed',   note: 'A stream of everything that just happened.' },
+      { x: 82, y: 24, title: 'Team snapshot',   note: 'Who\'s on, who\'s off. Quick glance.' },
     ],
   },
   {
@@ -24,12 +24,12 @@ export const SCREENS = [
     icon: '◉',
     url: 'mh02.app/clients/new',
     image: '/preview/add-client.png',
-    title: 'One home for every client.',
+    title: 'Add a client in about a minute.',
     caption:
-      'Add a client in a minute. Every project, invoice and communication threads back to the right record - with no spreadsheet in sight.',
+      'Fill in the basics, hit save. Every project, invoice and conversation with that client connects back to this record. No spreadsheet required.',
     hotspots: [
-      { x: 40, y: 32, title: 'Structured intake', note: 'The fields you actually need. Nothing extra.' },
-      { x: 68, y: 74, title: 'One-click save',    note: 'They show up across the app immediately.' },
+      { x: 40, y: 32, title: 'Just the fields you need', note: 'No bloat. Just what matters for your studio.' },
+      { x: 68, y: 74, title: 'One-click save',    note: 'Shows up everywhere in the app right away.' },
     ],
   },
   {
@@ -38,12 +38,12 @@ export const SCREENS = [
     icon: '⬢',
     url: 'mh02.app/employees',
     image: '/preview/employees-tab.png',
-    title: 'The team, at a glance.',
+    title: 'Everyone on one screen.',
     caption:
-      'Every employee, their role, their reporting line and their status. Onboarding, offboarding and role changes without an HR ticket.',
+      'Your whole team — role, reporting line, status. Need to onboard someone or change a title? Do it here, not through an HR ticket.',
     hotspots: [
-      { x: 22, y: 38, title: 'Roles + reporting', note: 'The org chart in one filterable table.' },
-      { x: 78, y: 42, title: 'Quick actions',      note: 'Update status without leaving the row.' },
+      { x: 22, y: 38, title: 'Roles + reporting', note: 'Your org chart as a filterable table.' },
+      { x: 78, y: 42, title: 'Quick actions',      note: 'Change status without leaving the row.' },
     ],
   },
   {
@@ -52,12 +52,12 @@ export const SCREENS = [
     icon: '✦',
     url: 'mh02.app/hr/increments',
     image: '/preview/hr-increment.png',
-    title: 'HR, without the friction.',
+    title: 'HR stuff, where it belongs.',
     caption:
-      'Increments, appraisals, public holidays and payroll context - captured against the person, not buried in an email thread.',
+      'Increments, appraisals, public holidays, payroll context — recorded against the person, not lost in someone\'s inbox.',
     hotspots: [
-      { x: 32, y: 44, title: 'Increment ledger', note: 'Full history, per person, always visible.' },
-      { x: 72, y: 66, title: 'Approval flow',   note: 'Route to the right approver, automatically.' },
+      { x: 32, y: 44, title: 'Increment history', note: 'Full record, per person, always visible.' },
+      { x: 72, y: 66, title: 'Approval routing',   note: 'Goes to the right approver automatically.' },
     ],
   },
   {
@@ -66,12 +66,12 @@ export const SCREENS = [
     icon: '▤',
     url: 'mh02.app/projects/stats',
     image: '/preview/project-stats-1.png',
-    title: 'Every project, in focus.',
+    title: 'See where each project actually stands.',
     caption:
-      'Estimation, delivery, burn and reporting - one screen per project that leadership can scan without a meeting.',
+      'Hours, budget, delivery progress — one screen per project. Leadership can check in without scheduling a meeting.',
     hotspots: [
-      { x: 30, y: 34, title: 'Live project stats', note: 'Hours, budget and progress in real time.' },
-      { x: 66, y: 58, title: 'Delivery timeline',   note: 'What has shipped, what is next.' },
+      { x: 30, y: 34, title: 'Project stats', note: 'Hours, budget and progress in real time.' },
+      { x: 66, y: 58, title: 'Delivery timeline',   note: 'What\'s shipped, what\'s coming.' },
     ],
   },
   {
@@ -80,12 +80,12 @@ export const SCREENS = [
     icon: '∑',
     url: 'mh02.app/projects/estimate',
     image: '/preview/project-estimation.png',
-    title: 'Estimate with confidence.',
+    title: 'Stop guessing on estimates.',
     caption:
-      'Bake past-project data into every new estimate. Time, cost and confidence bands calculated for you before the pitch goes out.',
+      'New pitch? The system looks at how long similar work actually took your team and gives you a range. You go in knowing, not hoping.',
     hotspots: [
-      { x: 38, y: 40, title: 'Data-backed lines', note: 'Rooted in your team’s past velocity.' },
-      { x: 68, y: 72, title: 'Confidence bands',  note: 'So you never over-promise.' },
+      { x: 38, y: 40, title: 'Data-backed lines', note: 'Based on how your team actually works.' },
+      { x: 68, y: 72, title: 'Confidence bands',  note: 'So you know when you\'re stretching it.' },
     ],
   },
   {
@@ -94,12 +94,12 @@ export const SCREENS = [
     icon: '▥',
     url: 'mh02.app/invoices/new',
     image: '/preview/invoice-generation.png',
-    title: 'Invoices, generated.',
+    title: 'Invoicing that does itself.',
     caption:
-      'The claim is approved, the hours are logged. The invoice writes itself - accounts just reviews and sends. Month-end is a five-minute job.',
+      'The hours are logged, the expenses are approved. The invoice assembles itself from that data. Accounts reviews it and hits send. Five minutes, tops.',
     hotspots: [
-      { x: 44, y: 38, title: 'Auto-drafted', note: 'From approved hours and expenses.' },
-      { x: 72, y: 78, title: 'Send in one click', note: 'PDF, email, ledger - all done.' },
+      { x: 44, y: 38, title: 'Auto-drafted', note: 'Built from approved hours and expenses.' },
+      { x: 72, y: 78, title: 'Send in one click', note: 'PDF, email, ledger entry — done.' },
     ],
   },
   {
@@ -108,12 +108,12 @@ export const SCREENS = [
     icon: '◫',
     url: 'mh02.app/projects/report',
     image: '/preview/project-report.png',
-    title: 'Monthly summaries, delivered.',
+    title: 'Reports that just show up.',
     caption:
-      'On the 1st, leadership gets a clean summary in Slack. Nobody assembled it. Nobody had to remember.',
+      'On the 1st, a clean summary of last month lands in the Slack leadership channel. Nobody compiled it. Nobody even thought about it.',
     hotspots: [
-      { x: 34, y: 48, title: 'Trend at a glance', note: 'Month-over-month, by project.' },
-      { x: 70, y: 30, title: 'Slack-ready format', note: 'Auto-posted to the leadership channel.' },
+      { x: 34, y: 48, title: 'Trends at a glance', note: 'Month-over-month, broken out by project.' },
+      { x: 70, y: 30, title: 'Slack-ready', note: 'Auto-posted to leadership. No copy-pasting.' },
     ],
   },
 ];

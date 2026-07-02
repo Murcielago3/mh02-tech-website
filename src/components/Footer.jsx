@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
           <div className="foot__ident-body">
             <span className="foot__ident-name">MH02 DASHBOARD</span>
-            <span className="foot__ident-sub mono">THE OPERATIONS PLATFORM FOR STUDIOS</span>
+            <span className="foot__ident-sub mono">RUNS YOUR STUDIO'S OPS</span>
           </div>
         </div>
 

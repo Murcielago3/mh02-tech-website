@@ -23,48 +23,48 @@ const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
 
 const PAINS = [
   {
-    title: 'Everything lives somewhere different',
-    desc: 'Clients in a Google Sheet, timesheets in a form, invoices in someone’s Word template. Nobody’s quite sure which copy is the real one anymore.',
-    fix: 'One place for clients, projects, hours and money — and only one copy of each.',
+    title: 'Your data is all over the place',
+    desc: 'Clients live in a Google Sheet. Timesheets are in some form. Invoices? Somebody\'s Word doc from 2019. Ask three people where the latest version is and you\'ll get three different answers.',
+    fix: 'Clients, projects, hours and money all sit in one place. One copy. That\'s it.',
   },
   {
-    title: 'Someone is always chasing someone',
-    desc: 'Friday goes to chasing timesheets. Month-end goes to poking the managers who still haven’t approved anything.',
-    fix: 'Slack does the poking now, and it tags the one person who’s actually holding things up.',
+    title: 'Half the week is spent nagging people',
+    desc: 'Every Friday someone\'s chasing timesheets. Every month-end someone\'s pinging managers who forgot to approve things. It\'s tedious and nobody likes being that person.',
+    fix: 'Slack handles the reminders now. It knows who\'s late and tags them directly.',
   },
   {
-    title: 'You hear how the month went in the next month',
-    desc: 'By the time someone’s pulled the numbers together, you’re two weeks into the next month — if anyone had time to pull them at all.',
-    fix: 'A plain summary of last month shows up in Slack on the 1st. You didn’t ask for it; it just arrives.',
+    title: 'Reports arrive too late to be useful',
+    desc: 'By the time anyone pulls the numbers together, you\'re already two weeks into the next month. And honestly? Half the time nobody gets around to it at all.',
+    fix: 'On the 1st, a summary of last month just shows up in Slack. Nobody asked for it. It\'s just there.',
   },
 ];
 
 const MODULES = [
-  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'Live burn, delivery timelines and data-backed estimates rooted in your team’s real velocity - so you never over-promise a client again.', tags: ['Live stats', 'Confidence bands'] },
-  { icon: IconUsers, n: '02', title: 'Clients & Team', desc: 'Every client, project and employee threads back to one clean record. Onboarding, roles and reporting lines without an HR ticket.', tags: ['CRM', 'Org chart'] },
-  { icon: IconClock, n: '03', title: 'Timesheets', desc: 'Weekly submission and approval flows with automatic nudges for anyone missing this week - or last. No chasing required.', tags: ['Approvals', 'Auto-nudge'] },
-  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Invoices draft themselves from approved hours and claims. Reimbursements route in ₹ with PAN, Aadhaar and TDS context built in.', tags: ['Auto-draft', 'TDS-aware'] },
-  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'Six event types routed to the right channel the moment they happen, @tagging the exact people who need to act.', tags: ['Real-time', 'Fail-safe'] },
-  { icon: IconShield, n: '06', title: 'Roles & Access', desc: 'Admin, project manager, employee and accounts each see exactly the surface they need. Nothing more, nothing missing.', tags: ['RBAC', '4 roles'] },
+  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'See how a project is actually doing — hours burned, timeline, budget. Estimates pull from past projects so you stop guessing and stop over-promising.', tags: ['Live stats', 'Confidence bands'] },
+  { icon: IconUsers, n: '02', title: 'Clients & Team', desc: 'One record per client, one record per person. Projects, roles, reporting lines — all connected. No more HR tickets to update a job title.', tags: ['CRM', 'Org chart'] },
+  { icon: IconClock, n: '03', title: 'Timesheets', desc: 'People submit weekly, managers approve. If someone forgets, the system nudges them. You don\'t have to.', tags: ['Approvals', 'Auto-nudge'] },
+  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Once hours and expenses are approved, the invoice basically writes itself. Handles ₹, PAN, Aadhaar and TDS because that\'s what your CA needs.', tags: ['Auto-draft', 'TDS-aware'] },
+  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'Submissions, approvals, rejections — they go to the right Slack channel and tag the right person. Instantly. No one has to forward anything.', tags: ['Real-time', 'Fail-safe'] },
+  { icon: IconShield, n: '06', title: 'Roles & Access', desc: 'Four roles. Each person sees exactly what they need and nothing they shouldn\'t. An employee never stumbles into payroll data.', tags: ['RBAC', '4 roles'] },
 ];
 
 const STEPS = [
-  { n: '01', title: 'Book a demo', desc: 'A 30-minute walkthrough on your use case - not a canned pitch. Bring your messiest workflow.' },
-  { n: '02', title: 'We tailor & deploy', desc: 'Your roles, your approval chains, your Slack channels - configured and deployed on your own infrastructure.' },
-  { n: '03', title: 'Your team just works', desc: 'Onboarding takes an afternoon. The reminders, reports and month-end run themselves from day one.' },
+  { n: '01', title: 'Book a demo', desc: 'We\'ll spend 30 minutes on your actual workflows, not a slideshow. Bring the process that annoys you most.' },
+  { n: '02', title: 'We set it up for you', desc: 'We configure your roles, approval chains and Slack channels. It runs on your infrastructure, not ours.' },
+  { n: '03', title: 'Your team starts using it', desc: 'Onboarding takes an afternoon. After that, the reminders and reports just run on their own.' },
 ];
 
 const AUTOMATIONS = [
-  { when: 'SUN · 12:00', title: 'Timesheet reminders', desc: 'Everyone missing this week or last gets one bullet, personally @tagged.', channel: '#common' },
-  { when: '1st · 09:00', title: 'Monthly report', desc: 'The previous month, summarised and posted to leadership. Nobody compiled it.', channel: '#management' },
-  { when: 'INSTANT', title: 'Event notifications', desc: 'Submissions, approvals and rejections fire the moment they happen.', channel: 'both' },
+  { when: 'SUN · 12:00', title: 'Timesheet reminders', desc: 'If you haven\'t submitted, you get tagged on Sunday. Simple as that.', channel: '#common' },
+  { when: '1st · 09:00', title: 'Monthly report', desc: 'Last month\'s numbers, assembled and posted to leadership. Nobody had to compile a thing.', channel: '#management' },
+  { when: 'INSTANT', title: 'Event notifications', desc: 'Someone submits, approves, or rejects something? The right people know immediately.', channel: 'both' },
 ];
 
 const PLANS = [
   {
     name: 'Pilot',
     tag: 'FOR SMALL TEAMS',
-    blurb: 'Up and running fast - prove it on one team before you roll it out.',
+    blurb: 'Try it with one team first. See if it sticks before you go wider.',
     features: ['Up to 15 seats', 'All core modules', 'Slack automation', 'Email support'],
     cta: 'Start a pilot',
     featured: false,
@@ -72,7 +72,7 @@ const PLANS = [
   {
     name: 'Studio',
     tag: 'MOST POPULAR',
-    blurb: 'The full operations layer for a growing studio or agency.',
+    blurb: 'Everything you need to run a growing studio. No module limits.',
     features: ['Unlimited seats', 'All modules + reporting', 'Custom approval chains', 'Custom Slack workflows', 'Priority support'],
     cta: 'Book a demo',
     featured: true,
@@ -80,7 +80,7 @@ const PLANS = [
   {
     name: 'Enterprise',
     tag: 'SELF-HOSTED',
-    blurb: 'Deployed on your own infrastructure, tailored to your processes.',
+    blurb: 'Runs on your servers, shaped around how you actually work.',
     features: ['Your infra, your data', 'SSO & audit trails', 'Custom modules', 'Dedicated onboarding', 'SLA-backed support'],
     cta: 'Talk to us',
     featured: false,
@@ -89,24 +89,24 @@ const PLANS = [
 
 const FAQS = [
   {
-    q: 'How long does it take to get started?',
-    a: 'Most teams are live within a week. We configure roles, approval chains and Slack channels with you, migrate your client and team data, and your team onboards in an afternoon - the interface is deliberately simple.',
+    q: 'How long until we\'re actually using it?',
+    a: 'About a week. We set up your roles and approval chains, move your client and team data over, and your people learn it in an afternoon. We kept the interface simple on purpose.',
   },
   {
     q: 'Where does our data live?',
-    a: 'Wherever you want it. MH02 Dashboard deploys as a containerised stack - on our managed infrastructure or entirely on yours. Enterprise deployments keep every byte inside your own network.',
+    a: 'Your call. We can host it for you, or it runs entirely on your own servers. Enterprise deployments keep everything inside your network. Nothing leaves.',
   },
   {
-    q: 'Does it replace our existing tools?',
-    a: 'It replaces the operations patchwork - the timesheet forms, expense spreadsheets, invoice templates and reminder rituals. It plugs into Slack rather than replacing it, and exports cleanly to your accounting tools.',
+    q: 'Does this replace Slack? Or our accounting software?',
+    a: 'Neither. It replaces the messy middle — the timesheet Google Forms, the expense spreadsheets, the invoice Word docs, the manual reminder rituals. It talks to Slack and exports clean data for your accountant.',
   },
   {
-    q: 'Is it built for Indian compliance?',
-    a: 'Yes. Reimbursements and payroll context handle ₹, PAN, Aadhaar and TDS natively. Invoices and exports follow the formats your CA actually asks for.',
+    q: 'Does it handle Indian tax and compliance stuff?',
+    a: 'Yes. ₹, PAN, Aadhaar, TDS — it\'s all built in. Invoices and exports come out in the format your CA actually wants, not some generic template you have to reformat.',
   },
   {
-    q: 'What if our process is non-standard?',
-    a: 'Every studio’s is. Approval chains, roles, reminder cadences and report formats are configuration, not code - and Enterprise plans include custom modules built for your workflow.',
+    q: 'Our process is kind of weird. Will this work?',
+    a: 'Probably. Every studio we\'ve talked to thinks their process is unusual — and it usually is. Approval chains, roles, reminder schedules, report formats — all of that is configurable. Enterprise plans can include custom modules too.',
   },
 ];
 
@@ -168,10 +168,10 @@ const TourSection = () => {
       <div className="container">
         <motion.div className="section__head" {...fadeUp}>
           <span className="eyebrow">[ 02 - LIVE TOUR ]</span>
-          <h2 className="section-title">Don&apos;t take our word for it.<br /><em>Click around.</em></h2>
+          <h2 className="section-title">See it for yourself.<br /><em>This is the real thing.</em></h2>
           <p className="section__lead">
-            This is the actual product. Pick a section in the sidebar or press <b>PLAY TOUR</b> and
-            let it drive.
+            Not a mockup. Pick a section in the sidebar, or hit <b>PLAY TOUR</b> and
+            watch it walk through the product.
           </p>
         </motion.div>
 
@@ -245,12 +245,12 @@ export default function Home({ introDone = true }) {
           </div>
 
           <h1 className="hero__title">
-            The operating system <em>your studio deserves.</em>
+            Run your studio <em>without the spreadsheet chaos.</em>
           </h1>
 
           <p className="hero__sub">
-            Projects, clients, timesheets, invoicing and reporting in one dashboard - with Slack
-            automation that chases people so you never have to.
+            Projects, clients, timesheets, invoices and reports — all in one place. Slack
+            reminders chase people down so you don't have to.
           </p>
 
           <div className="hero__cta">
@@ -276,7 +276,7 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 00 - WHY ]</span>
-            <h2 className="section-title">Your studio doesn&apos;t have an ops problem.<br /><em>It has an ops-tooling problem.</em></h2>
+            <h2 className="section-title">Your team is fine.<br /><em>Your tools are the problem.</em></h2>
           </motion.div>
           <div className="pains__grid">
             {PAINS.map((p, i) => (
@@ -299,10 +299,10 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 01 - PLATFORM ]</span>
-            <h2 className="section-title">Everything your studio runs on,<br /><em>in one place.</em></h2>
+            <h2 className="section-title">Six modules.<br /><em>One source of truth.</em></h2>
             <p className="section__lead">
-              Eight modules that share one source of truth - so an approved timesheet becomes a
-              project stat, an invoice line and a Slack notification without anyone touching it.
+              When someone approves a timesheet, it updates the project stats, shows up on the
+              invoice, and notifies the right people in Slack. Nobody has to copy anything anywhere.
             </p>
           </motion.div>
 
@@ -344,11 +344,10 @@ export default function Home({ introDone = true }) {
           <motion.div className="autom__panel" {...fadeUp}>
             <div className="autom__copy">
               <span className="autom__eyebrow mono">[ 03 - AUTOMATION ]</span>
-              <h2 className="autom__title">The cadence <em>runs itself.</em></h2>
+              <h2 className="autom__title">Set it up once. <em>It handles the rest.</em></h2>
               <p className="autom__lead">
-                MH02 Dashboard doesn&apos;t just store your operations data - it acts on it. Reminders,
-                reports and notifications land in Slack on schedule, every time, without a human
-                in the loop.
+                Reminders go out on Sunday. Reports land on the 1st. Approvals and rejections
+                ping the right channel the moment they happen. You don't have to remember any of it.
               </p>
               <div className="autom__rows">
                 {AUTOMATIONS.map((s) => (
@@ -387,16 +386,16 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 04 - BUILT TO BE TRUSTED ]</span>
-            <h2 className="section-title">Your ops data is the business.<br /><em>We treat it that way.</em></h2>
+            <h2 className="section-title">This is your operations data.<br /><em>We take that seriously.</em></h2>
           </motion.div>
           <div className="trust__grid">
             {[
-              { icon: IconShield, title: 'Role-scoped access', desc: 'Four roles, each seeing exactly their surface. An employee never sees payroll; accounts never edits projects.' },
-              { icon: IconDatabase, title: 'Your infrastructure', desc: 'Containerised deploys that run on your servers or ours. Enterprise data never leaves your network.' },
-              { icon: IconBolt, title: 'Fail-safe delivery', desc: 'Every notification is queued, retried and logged. If Slack blinks, the message still lands.' },
-              { icon: IconLayers, title: 'Boring, proven stack', desc: 'FastAPI, PostgreSQL, Redis and Celery - audited dependencies and a stack your own engineers can inspect.' },
-              { icon: IconUsers, title: 'Full audit trail', desc: 'Every approval, edit and rupee is attributable. Month-end questions take seconds, not archaeology.' },
-              { icon: IconTerminal, title: 'Exportable, always', desc: 'Your data is yours. Clean exports for your CA, your accounting tools, or your way out - no lock-in.' },
+              { icon: IconShield, title: 'Role-scoped access', desc: 'Four roles. Each person sees their own surface. Employees can\'t see payroll. Accounts can\'t edit projects. Simple.' },
+              { icon: IconDatabase, title: 'Your infrastructure', desc: 'Runs on your servers or ours. Enterprise plans keep everything inside your network. Your data doesn\'t leave.' },
+              { icon: IconBolt, title: 'Fail-safe delivery', desc: 'Notifications are queued, retried and logged. If Slack goes down for a minute, the message still gets through.' },
+              { icon: IconLayers, title: 'Boring, proven stack', desc: 'FastAPI, PostgreSQL, Redis, Celery. Nothing exotic. Your engineers can read through the whole thing.' },
+              { icon: IconUsers, title: 'Full audit trail', desc: 'Every approval, every edit, every rupee — traceable. When someone asks "who approved this?" you\'ll know in seconds.' },
+              { icon: IconTerminal, title: 'Exportable, always', desc: 'Your data is yours. Export it for your CA, your accounting software, or to leave us entirely. No lock-in.' },
             ].map((t, i) => {
               const Icon = t.icon;
               return (
@@ -416,7 +415,7 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 05 - GETTING STARTED ]</span>
-            <h2 className="section-title">Three steps. <em>One week.</em></h2>
+            <h2 className="section-title">Up and running <em>in a week.</em></h2>
           </motion.div>
           <div className="proc">
             <div className="proc__line" />
@@ -436,10 +435,10 @@ export default function Home({ introDone = true }) {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 06 - PRICING ]</span>
-            <h2 className="section-title">Plans that scale <em>with the studio.</em></h2>
+            <h2 className="section-title">Pricing that <em>makes sense.</em></h2>
             <p className="section__lead">
-              Pricing is per deployment, not per surprise. Tell us your team size and we&apos;ll quote
-              in one business day.
+              You pay per deployment, not per surprise. Tell us how big your team is
+              and we'll get you a quote within a day.
             </p>
           </motion.div>
           <div className="pricing__grid">
@@ -473,7 +472,7 @@ export default function Home({ introDone = true }) {
         <div className="container faq__wrap">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 07 - FAQ ]</span>
-            <h2 className="section-title">Questions studios <em>ask us.</em></h2>
+            <h2 className="section-title">Things people <em>usually ask.</em></h2>
           </motion.div>
           <motion.div className="faq__list" {...fadeUp}>
             {FAQS.map((f, i) => (
@@ -493,9 +492,9 @@ export default function Home({ introDone = true }) {
         <motion.div className="contact__panel container" {...fadeUp}>
           <span className="contact__eyebrow mono">[ GET STARTED ]</span>
           <h2 className="contact__title">
-            Give your studio its <em>operating system.</em>
+            Ready to stop <em>winging it?</em>
           </h2>
-          <p className="contact__sub">A 30-minute demo on your workflows. We reply within one business day.</p>
+          <p className="contact__sub">30 minutes, your workflows, no slides. We'll reply within a day.</p>
           <Magnet padding={50} strength={0.3}>
             <a href={DEMO_MAIL} className="btn btn--light btn--lg">
               Book a demo <IconArrow width={18} height={18} />

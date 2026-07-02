@@ -18,12 +18,12 @@ const fadeUp = {
 const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
 
 const MODULES = [
-  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'Live burn, hours and delivery timelines per project - plus estimates rooted in your team’s actual past velocity, with confidence bands so you never over-promise.', meta: 'live stats · estimates' },
-  { icon: IconUsers, n: '02', title: 'Clients, Team & HR', desc: 'One record per client and per person. Roles, reporting lines, increments, appraisals and holidays - captured where they belong, not in email threads.', meta: 'crm · org · hr' },
-  { icon: IconClock, n: '03', title: 'Timesheets', desc: 'Weekly submission, review and approval flows with automatic nudges for anyone missing this week - or last. Nobody chases anybody.', meta: 'approvals · auto-nudge' },
-  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Invoices draft themselves from approved hours and claims. Reimbursements route in ₹ with PAN, Aadhaar and TDS context and instant decision notifications.', meta: 'auto-draft · tds-aware' },
-  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'A single fail-safe service routes six event types to the right channel - @tagging the exact people who need to act, the moment they need to.', meta: 'real-time · fail-safe' },
-  { icon: IconTerminal, n: '06', title: 'Reporting Engine', desc: 'On the 1st at 09:00, a clean summary of the previous month is assembled and posted to leadership. Nobody compiled it. Nobody had to remember.', meta: 'scheduled · 1st 09:00' },
+  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'You can see exactly where a project stands — hours, budget, timeline. When you\'re estimating a new one, it pulls from your team\'s actual history so you\'re not guessing.', meta: 'live stats · estimates' },
+  { icon: IconUsers, n: '02', title: 'Clients, Team & HR', desc: 'One record per client, one per person. Roles, reporting lines, increments, appraisals, holidays — all in one spot instead of scattered across email threads and spreadsheets.', meta: 'crm · org · hr' },
+  { icon: IconClock, n: '03', title: 'Timesheets', desc: 'Submit weekly, approve weekly. If someone forgets, they get a nudge. You don\'t have to chase anyone.', meta: 'approvals · auto-nudge' },
+  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Once the hours and expenses are approved, the invoice puts itself together. Handles ₹, PAN, Aadhaar and TDS — the stuff your accountant actually cares about.', meta: 'auto-draft · tds-aware' },
+  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'When something happens — a submission, an approval, a rejection — the right people get tagged in the right channel. No one has to forward a thing.', meta: 'real-time · fail-safe' },
+  { icon: IconTerminal, n: '06', title: 'Reporting Engine', desc: 'On the 1st of every month, a clean summary of the previous month appears in Slack. Nobody put it together. It just shows up.', meta: 'scheduled · 1st 09:00' },
 ];
 
 const ARCH = [
@@ -42,9 +42,9 @@ const ROLES = [
 ];
 
 const SCHEDULE = [
-  { when: 'SUN · 12:00', title: 'Timesheet reminder', desc: 'Nudges everyone missing this week or last - one bullet per person, each @tagged.', channel: '#common' },
-  { when: '1st · 09:00', title: 'Monthly report', desc: 'Previous-month summary assembled and posted to leadership automatically.', channel: '#management' },
-  { when: 'INSTANT', title: 'Event notifications', desc: 'Submissions, approvals and rejections fire the moment they happen.', channel: 'both' },
+  { when: 'SUN · 12:00', title: 'Timesheet reminder', desc: 'Missed your timesheet? You\'ll hear about it on Sunday. Personally tagged, one line.', channel: '#common' },
+  { when: '1st · 09:00', title: 'Monthly report', desc: 'Last month\'s numbers, assembled and dropped into the leadership channel. No one had to remember.', channel: '#management' },
+  { when: 'INSTANT', title: 'Event notifications', desc: 'Something gets submitted, approved or rejected? The right people know right away.', channel: 'both' },
 ];
 
 export default function Product() {
@@ -65,12 +65,12 @@ export default function Product() {
               MH02 <em>Dashboard.</em>
             </h1>
             <p className="prod-hero__tag">
-              The operating system for your studio.
+              One tool for everything your studio runs on.
             </p>
             <p className="prod-hero__sub">
-              Every module below shares one source of truth - so an approved timesheet becomes a
-              project stat, an invoice line and a Slack notification without anyone lifting a
-              finger. Here&apos;s how it fits together.
+              All six modules share the same data. Approve a timesheet and it updates the project,
+              shows up on the invoice, and pings the right person in Slack. Here's how the
+              whole thing works.
             </p>
             <div className="prod-hero__cta">
               <Magnet padding={50} strength={0.3}>
@@ -141,7 +141,7 @@ export default function Product() {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 01 - MODULES ]</span>
-            <h2 className="section-title">Everything your studio runs on,<br />in one platform.</h2>
+            <h2 className="section-title">Six modules. One platform.<br />Nothing else to juggle.</h2>
           </motion.div>
           <div className="mod-grid">
             {MODULES.map((m, i) => {
@@ -169,10 +169,10 @@ export default function Product() {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 02 - UNDER THE HOOD ]</span>
-            <h2 className="section-title">Boring, proven infrastructure.<br /><em>On yours or ours.</em></h2>
+            <h2 className="section-title">Nothing fancy under the hood.<br /><em>That's the point.</em></h2>
             <p className="section__lead">
-              A containerised stack your own engineers can inspect - and that Enterprise
-              deployments run entirely inside your network.
+              It's a containerised stack your engineers can actually read through. Enterprise
+              deployments live entirely inside your network.
             </p>
           </motion.div>
           <motion.div className="arch__flow" {...fadeUp}>
@@ -198,7 +198,7 @@ export default function Product() {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 03 - AUTOMATION ]</span>
-            <h2 className="section-title">The cadence runs itself.</h2>
+            <h2 className="section-title">Runs on autopilot, every week.</h2>
           </motion.div>
           <div className="sched">
             {SCHEDULE.map((s, i) => (
@@ -220,7 +220,7 @@ export default function Product() {
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
             <span className="eyebrow">[ 04 - ACCESS CONTROL ]</span>
-            <h2 className="section-title">Four roles. Precise scope.</h2>
+            <h2 className="section-title">Four roles. Everyone sees only what they should.</h2>
           </motion.div>
           <div className="roles-grid">
             {ROLES.map((r, i) => (
@@ -243,9 +243,9 @@ export default function Product() {
         <motion.div className="prod-cta__panel container" {...fadeUp}>
           <span className="eyebrow">[ GET STARTED ]</span>
           <h2 className="prod-cta__title">
-            Want MH02 Dashboard <span className="text-grad">running your studio?</span>
+            Want to see this <span className="text-grad">running with your data?</span>
           </h2>
-          <p className="prod-cta__sub">We tailor the platform to your workflows and deploy it on your own infrastructure.</p>
+          <p className="prod-cta__sub">We'll set it up around your workflows and deploy it wherever you want it.</p>
           <div className="prod-cta__btns">
             <Magnet padding={50} strength={0.3}>
               <a href={DEMO_MAIL} className="btn btn--light btn--lg">Book a demo <IconArrow width={18} height={18} /></a>
