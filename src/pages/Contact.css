@@ -119,5 +119,20 @@
   color: var(--green-ink);
 }
 
-
-
+/* ─────────────────────────── RESPONSIVE ─────────────────────── */
+@media (max-width: 768px) {
+  .contact-page__title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+  
+  .contact__folder-wrap {
+    transform: scale(0.85);
+    margin-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .contact__folder-wrap {
+    transform: scale(0.7);
+    margin-top: 0px;
+  }
+}

@@ -602,3 +602,16 @@
   .faq__wrap { grid-template-columns: 1fr; }
   .faq__wrap .section__head { position: static; margin-bottom: var(--space-xl); }
 }
+@media (max-width: 768px) {
+  .hero { padding-top: calc(var(--navbar-height) + var(--space-xl)); padding-bottom: var(--space-2xl); }
+  .hero__btns { flex-direction: column; width: 100%; gap: 0.8rem; }
+  .hero__btns .btn { width: 100%; justify-content: center; }
+  
+  .cap-card, .pain-card, .trust-card, .pricing__tier {
+    padding: 1.2rem !important;
+  }
+  
+  .contact__title { font-size: clamp(2rem, 8vw, 2.5rem); }
+  .contact__content > div[style] { flex-direction: column; gap: 0.8rem !important; }
+  .contact__content > div[style] .btn { width: 100%; justify-content: center; }
+}
