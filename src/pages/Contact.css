@@ -1,0 +1,141 @@
+/* ────────────────────── CONTACT PAGE ────────────────────── */
+.contact-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-xl) var(--space-4xl);
+  overflow: hidden;
+}
+
+.contact__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.light-mode-bg .contact__title {
+  color: #111;
+}
+
+.light-mode-bg .contact__lead {
+  color: #444;
+}
+
+.contact__wrap {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4xl);
+}
+
+.contact__header {
+  text-align: center;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 560;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+
+.contact__title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 460;
+  color: var(--green);
+}
+
+.contact__lead {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact__folder-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 400px;
+}
+
+.contact-paper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 32px 36px;
+  color: #1a1a1a;
+  box-sizing: border-box;
+}
+
+.cp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cp-role {
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 0.15em;
+}
+
+.cp-name {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  color: #0d0d0d;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.cp-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 24px 0;
+}
+
+.cp-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cp-links a {
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: #4a4a4a;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.cp-links a:hover {
+  color: #000;
+  transform: translateX(4px);
+}
+
+.cp-links a svg {
+  color: var(--green-ink);
+}
+
+
+

@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import ClickSpark from './components/reactbits/ClickSpark.jsx';
 import Home from './pages/Home.jsx';
 import Product from './pages/Product.jsx';
+import Contact from './pages/Contact.jsx';
 import './App.css';
 
 import { ReactLenis } from 'lenis/react';
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home introDone={loaded} />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </ClickSpark>

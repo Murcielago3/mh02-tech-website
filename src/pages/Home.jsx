@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { DotGrid, SpotlightCard, Magnet } from '../components/reactbits';
+import { SpotlightCard, Magnet, SideRays } from '../components/reactbits';
 import {
   IconClock, IconReceipt, IconBell, IconChart, IconUsers, IconTerminal,
   IconShield, IconBolt, IconLayers, IconArrow, IconDatabase,
 } from '../components/Icons.jsx';
 import AppFrame from '../components/AppFrame/AppFrame.jsx';
+import Antigravity from '../components/reactbits/Antigravity';
 import { SCREENS } from '../data/screens.js';
 import './Home.css';
 
@@ -17,14 +18,14 @@ const fadeUp = {
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
-const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
+const DEMO_MAIL = 'https://mail.google.com/mail/?view=cm&fs=1&to=hello.tech@studiomh02.com&su=MH02%20Dashboard%20demo&body=Hi%20there%2C%0A%0AI%20would%20like%20to%20get%20a%20demo%20of%20the%20MH02%20Dashboard.%20Please%20let%20me%20know%20what%20the%20next%20steps%20are%20to%20set%20this%20up.%0A%0AThanks!';
 
 /* ─── Content ────────────────────────────────────────────────── */
 
 const PAINS = [
   {
     title: 'Your data is all over the place',
-    desc: 'Clients live in a Google Sheet. Timesheets are in some form. Invoices? Somebody\'s Word doc from 2019. Ask three people where the latest version is and you\'ll get three different answers.',
+    desc: 'Clients live in a spreadsheet. Timesheets are in some form. Invoices? Somebody\'s document from 2019. Ask three people where the latest version is and you\'ll get three different answers.',
     fix: 'Clients, projects, hours and money all sit in one place. One copy. That\'s it.',
   },
   {
@@ -35,22 +36,22 @@ const PAINS = [
   {
     title: 'Reports arrive too late to be useful',
     desc: 'By the time anyone pulls the numbers together, you\'re already two weeks into the next month. And honestly? Half the time nobody gets around to it at all.',
-    fix: 'On the 1st, a summary of last month just shows up in Slack. Nobody asked for it. It\'s just there.',
+    fix: 'On the 1st, a summary of last month just shows up in Slack. Nobody had to ask for it. It\'s just there.',
   },
 ];
 
 const MODULES = [
-  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'See how a project is actually doing — hours burned, timeline, budget. Estimates pull from past projects so you stop guessing and stop over-promising.', tags: ['Live stats', 'Confidence bands'] },
-  { icon: IconUsers, n: '02', title: 'Clients & Team', desc: 'One record per client, one record per person. Projects, roles, reporting lines — all connected. No more HR tickets to update a job title.', tags: ['CRM', 'Org chart'] },
+  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'See how a project is actually doing - hours burned, timeline, budget. Estimate your next project with apt pricing, exactly how you plan it to be in every aspect.', tags: ['Live stats', 'Confidence bands'] },
+  { icon: IconUsers, n: '02', title: 'Clients & Team', desc: 'One record per client, one record per person. Projects, roles, reporting lines - all connected. No more HR tickets to update a job title.', tags: ['CRM', 'Org chart'] },
   { icon: IconClock, n: '03', title: 'Timesheets', desc: 'People submit weekly, managers approve. If someone forgets, the system nudges them. You don\'t have to.', tags: ['Approvals', 'Auto-nudge'] },
   { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Once hours and expenses are approved, the invoice basically writes itself. Handles ₹, PAN, Aadhaar and TDS because that\'s what your CA needs.', tags: ['Auto-draft', 'TDS-aware'] },
-  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'Submissions, approvals, rejections — they go to the right Slack channel and tag the right person. Instantly. No one has to forward anything.', tags: ['Real-time', 'Fail-safe'] },
+  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'Submissions, approvals, rejections - they go to the right Slack channel and tag the right person. Instantly. No one has to forward anything.', tags: ['Real-time', 'Fail-safe'] },
   { icon: IconShield, n: '06', title: 'Roles & Access', desc: 'Four roles. Each person sees exactly what they need and nothing they shouldn\'t. An employee never stumbles into payroll data.', tags: ['RBAC', '4 roles'] },
 ];
 
 const STEPS = [
   { n: '01', title: 'Book a demo', desc: 'We\'ll spend 30 minutes on your actual workflows, not a slideshow. Bring the process that annoys you most.' },
-  { n: '02', title: 'We set it up for you', desc: 'We configure your roles, approval chains and Slack channels. It runs on your infrastructure, not ours.' },
+  { n: '02', title: 'We set it up for you', desc: 'We configure your roles, approval chains and Slack channels. We handle all the hosting and maintenance.' },
   { n: '03', title: 'Your team starts using it', desc: 'Onboarding takes an afternoon. After that, the reminders and reports just run on their own.' },
 ];
 
@@ -94,19 +95,19 @@ const FAQS = [
   },
   {
     q: 'Where does our data live?',
-    a: 'Your call. We can host it for you, or it runs entirely on your own servers. Enterprise deployments keep everything inside your network. Nothing leaves.',
+    a: 'We host and manage everything on our secure infrastructure. You don\'t have to worry about servers, updates, or maintenance. It just works.',
   },
   {
     q: 'Does this replace Slack? Or our accounting software?',
-    a: 'Neither. It replaces the messy middle — the timesheet Google Forms, the expense spreadsheets, the invoice Word docs, the manual reminder rituals. It talks to Slack and exports clean data for your accountant.',
+    a: 'Neither. It replaces the messy middle - the timesheet forms, the expense spreadsheets, the invoice documents, the manual reminder rituals. It talks to Slack and exports clean data for your accountant.',
   },
   {
     q: 'Does it handle Indian tax and compliance stuff?',
-    a: 'Yes. ₹, PAN, Aadhaar, TDS — it\'s all built in. Invoices and exports come out in the format your CA actually wants, not some generic template you have to reformat.',
+    a: 'Yes. ₹, PAN, Aadhaar, TDS - it\'s all built in. Invoices and exports come out in the format your CA actually wants, not some generic template you have to reformat.',
   },
   {
     q: 'Our process is kind of weird. Will this work?',
-    a: 'Probably. Every studio we\'ve talked to thinks their process is unusual — and it usually is. Approval chains, roles, reminder schedules, report formats — all of that is configurable. Enterprise plans can include custom modules too.',
+    a: 'Probably. Every studio we\'ve talked to thinks their process is unusual - and it usually is. Approval chains, roles, reminder schedules, report formats - all of that is configurable. Enterprise plans can include custom modules too.',
   },
 ];
 
@@ -123,12 +124,12 @@ const ScrollMarquee = () => {
 
   return (
     <div className="marquee" ref={ref} aria-hidden="true">
-      <motion.div className="marquee__track" style={{ x }}>
+      <motion.div className="marquee__inner" style={{ x }}>
         {[...MARQUEE_WORDS, ...MARQUEE_WORDS].map((t, i) => (
-          <span className={`marquee__item ${i % 2 ? 'marquee__item--outline' : ''}`} key={i}>
-            {t}
-            <i className="marquee__dot" />
-          </span>
+          <div className="marquee__item" key={i}>
+            {i % 2 === 0 ? t : <em>{t}</em>}
+            <span />
+          </div>
         ))}
       </motion.div>
     </div>
@@ -167,7 +168,6 @@ const TourSection = () => {
     <section className="section tour" id="tour">
       <div className="container">
         <motion.div className="section__head" {...fadeUp}>
-          <span className="eyebrow">[ 02 - LIVE TOUR ]</span>
           <h2 className="section-title">See it for yourself.<br /><em>This is the real thing.</em></h2>
           <p className="section__lead">
             Not a mockup. Pick a section in the sidebar, or hit <b>PLAY TOUR</b> and
@@ -186,14 +186,10 @@ const TourSection = () => {
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="tour__inner"
               >
-                <span className="tour__eyebrow mono">
-                  <i /> NOW SHOWING · {active.label.toUpperCase()}
-                </span>
                 <h3 className="tour__title">{active.title}</h3>
                 <p className="tour__desc">{active.caption}</p>
 
                 <div className="tour__meta mono">
-                  <span>SCREEN · {String(SCREENS.findIndex((s) => s.id === active.id) + 1).padStart(2, '0')}/{String(SCREENS.length).padStart(2, '0')}</span>
                   <span>{active.url}</span>
                 </div>
               </motion.div>
@@ -224,48 +220,56 @@ export default function Home({ introDone = true }) {
     <main className="home">
       {/* ───────────────────────── HERO ───────────────────────── */}
       <section className="hero" id="top">
+        {/* ReactBits SideRays Component */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: introDone ? 1 : 0 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
           style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
-          <DotGrid className="hero__grid" baseColor="#c5d8cd" activeColor="#217a52" dotSize={3} />
+          <SideRays
+            speed={2.8}
+            rayColor1="#defff0"
+            rayColor2="#217a52"
+            intensity={2.4}
+            spread={0.1}
+            origin="top-right"
+            tilt={5}
+            saturation={1.95}
+            blend={0.27}
+            falloff={1.5}
+            opacity={1.0}
+          />
         </motion.div>
-        <div className="hero__fade" />
+        {/* Removed hero__glass */}
 
-        <motion.div
-          className="hero__content container"
-          initial={{ opacity: 0, y: 36 }}
-          animate={introDone ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-        >
-          <div className="hero__badge mono">
-            <i /> MH02 DASHBOARD · FOR STUDIOS & AGENCIES
-          </div>
+        <div className="container hero__inner">
+          <motion.div
+            className="hero__content"
+            initial={{ opacity: 0, y: 36 }}
+            animate={introDone ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          >
+            <h1 className="hero__title">
+              Run your studio,<br /><em>not your software.</em>
+            </h1>
 
-          <h1 className="hero__title">
-            Run your studio <em>without the spreadsheet chaos.</em>
-          </h1>
+            <p className="hero__sub">
+              One platform for clients, projects, timesheets, and invoicing. Fully integrated with Slack so nothing ever falls through the cracks.
+            </p>
 
-          <p className="hero__sub">
-            Projects, clients, timesheets, invoices and reports — all in one place. Slack
-            reminders chase people down so you don't have to.
-          </p>
-
-          <div className="hero__cta">
-            <Magnet padding={50} strength={0.3}>
-              <a href={DEMO_MAIL} className="btn btn--primary">
-                Book a demo <IconArrow width={18} height={18} />
+            <div className="hero__cta">
+              <Magnet padding={50} strength={0.3}>
+                <a href={DEMO_MAIL} className="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                  Book a demo <IconArrow width={18} height={18} />
+                </a>
+              </Magnet>
+              <a href="#tour" className="btn btn--ghost">
+                <span className="btn__pulse" /> Try the live tour
               </a>
-            </Magnet>
-            <a href="#tour" className="btn btn--ghost">
-              <span className="btn__pulse" /> Try the live tour
-            </a>
-          </div>
-        </motion.div>
-
-        <div className="hero__scroll mono">SCROLL ↓</div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ──────────── SCROLL MARQUEE (right below hero) ────────── */}
@@ -275,7 +279,6 @@ export default function Home({ introDone = true }) {
       <section className="section pains" id="why">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 00 - WHY ]</span>
             <h2 className="section-title">Your team is fine.<br /><em>Your tools are the problem.</em></h2>
           </motion.div>
           <div className="pains__grid">
@@ -298,7 +301,6 @@ export default function Home({ introDone = true }) {
       <section className="section platform" id="platform">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 01 - PLATFORM ]</span>
             <h2 className="section-title">Six modules.<br /><em>One source of truth.</em></h2>
             <p className="section__lead">
               When someone approves a timesheet, it updates the project stats, shows up on the
@@ -341,43 +343,27 @@ export default function Home({ introDone = true }) {
       {/* ─────────────────────── AUTOMATION ───────────────────── */}
       <section className="section autom" id="automation">
         <div className="container">
-          <motion.div className="autom__panel" {...fadeUp}>
-            <div className="autom__copy">
-              <span className="autom__eyebrow mono">[ 03 - AUTOMATION ]</span>
-              <h2 className="autom__title">Set it up once. <em>It handles the rest.</em></h2>
-              <p className="autom__lead">
-                Reminders go out on Sunday. Reports land on the 1st. Approvals and rejections
-                ping the right channel the moment they happen. You don't have to remember any of it.
-              </p>
-              <div className="autom__rows">
-                {AUTOMATIONS.map((s) => (
-                  <div className="autom__row" key={s.title}>
-                    <span className="autom__when mono">{s.when}</span>
-                    <div className="autom__body">
-                      <h3>{s.title}</h3>
-                      <p>{s.desc}</p>
-                    </div>
-                    <span className="autom__channel mono">{s.channel}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="autom__visual">
-              <div className="term">
-                <div className="term__bar">
-                  <i /><i /><i />
-                  <span className="mono">mh02 · automation log</span>
-                </div>
-                <pre className="term__body mono">{`[SUN 12:00] timesheet_reminder.run()
-[SUN 12:00] ✓ 3 nudges sent, @tagged
-[MON 09:14] → claim approved · ₹4,200
-[MON 09:14] ✓ notified @accounts
-[1st 09:00] monthly_report.dispatch()
-[1st 09:00] ✓ posted #management
-            0 missed · 0 manual`}</pre>
-              </div>
-            </div>
+          <motion.div className="section__head" {...fadeUp}>
+            <h2 className="section-title">Set it up once.<br /><em>It handles the rest.</em></h2>
+            <p className="section__lead">
+              Reminders go out on Sunday. Reports land on the 1st. Approvals and rejections
+              route themselves to the right people. You don't have to remember any of it.
+            </p>
           </motion.div>
+          <div className="autom__grid">
+            {AUTOMATIONS.map((a, i) => (
+              <motion.div className="autom__card" key={a.when} {...fadeUp} transition={{ delay: i * 0.1 }}>
+                <div className="autom__card-head">
+                  <span className="autom__when mono">
+                    <IconClock width={14} height={14} /> {a.when}
+                  </span>
+                  <span className="autom__channel mono">{a.channel}</span>
+                </div>
+                <h4 className="autom__card-title">{a.title}</h4>
+                <p className="autom__card-desc">{a.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -385,16 +371,15 @@ export default function Home({ introDone = true }) {
       <section className="section trust" id="trust">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 04 - BUILT TO BE TRUSTED ]</span>
             <h2 className="section-title">This is your operations data.<br /><em>We take that seriously.</em></h2>
           </motion.div>
           <div className="trust__grid">
             {[
               { icon: IconShield, title: 'Role-scoped access', desc: 'Four roles. Each person sees their own surface. Employees can\'t see payroll. Accounts can\'t edit projects. Simple.' },
-              { icon: IconDatabase, title: 'Your infrastructure', desc: 'Runs on your servers or ours. Enterprise plans keep everything inside your network. Your data doesn\'t leave.' },
+              { icon: IconDatabase, title: 'Secure infrastructure', desc: 'We host everything on our secure, managed servers. We handle the maintenance and updates so you don\'t have to.' },
               { icon: IconBolt, title: 'Fail-safe delivery', desc: 'Notifications are queued, retried and logged. If Slack goes down for a minute, the message still gets through.' },
-              { icon: IconLayers, title: 'Boring, proven stack', desc: 'FastAPI, PostgreSQL, Redis, Celery. Nothing exotic. Your engineers can read through the whole thing.' },
-              { icon: IconUsers, title: 'Full audit trail', desc: 'Every approval, every edit, every rupee — traceable. When someone asks "who approved this?" you\'ll know in seconds.' },
+              { icon: IconLayers, title: 'Proven stack', desc: 'Standard, proven backend technologies. Nothing exotic.' },
+              { icon: IconUsers, title: 'Full audit trail', desc: 'Every approval, every edit, every rupee - traceable. When someone asks "who approved this?" you\'ll know in seconds.' },
               { icon: IconTerminal, title: 'Exportable, always', desc: 'Your data is yours. Export it for your CA, your accounting software, or to leave us entirely. No lock-in.' },
             ].map((t, i) => {
               const Icon = t.icon;
@@ -414,7 +399,6 @@ export default function Home({ introDone = true }) {
       <section className="section" id="how">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 05 - GETTING STARTED ]</span>
             <h2 className="section-title">Up and running <em>in a week.</em></h2>
           </motion.div>
           <div className="proc">
@@ -422,7 +406,7 @@ export default function Home({ introDone = true }) {
             {STEPS.map((p, i) => (
               <motion.div className="proc__step" key={p.n} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.06 }}>
                 <span className="proc__n mono">{p.n}</span>
-                <h3 className="proc__title">{p.title}</h3>
+                <h3 className="proc__title" style={{ whiteSpace: 'nowrap' }}>{p.title}</h3>
                 <p className="proc__desc">{p.desc}</p>
               </motion.div>
             ))}
@@ -430,49 +414,13 @@ export default function Home({ introDone = true }) {
         </div>
       </section>
 
-      {/* ───────────────────────── PRICING ────────────────────── */}
-      <section className="section pricing" id="pricing">
-        <div className="container">
-          <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 06 - PRICING ]</span>
-            <h2 className="section-title">Pricing that <em>makes sense.</em></h2>
-            <p className="section__lead">
-              You pay per deployment, not per surprise. Tell us how big your team is
-              and we'll get you a quote within a day.
-            </p>
-          </motion.div>
-          <div className="pricing__grid">
-            {PLANS.map((p, i) => (
-              <motion.div
-                className={`plan ${p.featured ? 'plan--featured' : ''}`}
-                key={p.name}
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: i * 0.08 }}
-              >
-                <span className="plan__tag mono">{p.tag}</span>
-                <h3 className="plan__name">{p.name}</h3>
-                <p className="plan__blurb">{p.blurb}</p>
-                <ul className="plan__features">
-                  {p.features.map((f) => <li key={f}><span className="dotmark" />{f}</li>)}
-                </ul>
-                <a
-                  href={`mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20-%20${encodeURIComponent(p.name)}`}
-                  className={`btn ${p.featured ? 'btn--light' : 'btn--ghost'} plan__cta`}
-                >
-                  {p.cta} <IconArrow width={16} height={16} />
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ─────────────────────────── FAQ ──────────────────────── */}
       <section className="section faq" id="faq">
         <div className="container faq__wrap">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 07 - FAQ ]</span>
-            <h2 className="section-title">Things people <em>usually ask.</em></h2>
+            <h2 className="section-title">Things people<br /><em>usually ask.</em></h2>
           </motion.div>
           <motion.div className="faq__list" {...fadeUp}>
             {FAQS.map((f, i) => (
@@ -490,17 +438,44 @@ export default function Home({ introDone = true }) {
       {/* ───────────────────────── CONTACT ────────────────────── */}
       <section className="section contact" id="contact">
         <motion.div className="contact__panel container" {...fadeUp}>
-          <span className="contact__eyebrow mono">[ GET STARTED ]</span>
-          <h2 className="contact__title">
-            Ready to stop <em>winging it?</em>
-          </h2>
-          <p className="contact__sub">30 minutes, your workflows, no slides. We'll reply within a day.</p>
-          <Magnet padding={50} strength={0.3}>
-            <a href={DEMO_MAIL} className="btn btn--light btn--lg">
-              Book a demo <IconArrow width={18} height={18} />
-            </a>
-          </Magnet>
-          <span className="contact__alt mono">or write to xyz@studiomh02.com</span>
+          <div className="contact__bg-canvas">
+            <Antigravity
+              count={1100}
+              magnetRadius={5}
+              ringRadius={8}
+              waveSpeed={0.8}
+              waveAmplitude={0.8}
+              particleSize={0.5}
+              lerpSpeed={0.07}
+              color="#ffffff"
+              autoAnimate={false}
+              particleVariance={1}
+              rotationSpeed={0.3}
+              depthFactor={5}
+              pulseSpeed={5.3}
+              particleShape="sphere"
+              fieldStrength={20}
+            />
+          </div>
+          <div className="contact__content">
+            <h2 className="contact__title">
+              Ready to stop <em>winging it?</em>
+            </h2>
+            <p className="contact__sub">30 minutes, your workflows, no slides. We'll reply within a day.</p>
+            <div style={{ pointerEvents: 'auto', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <Magnet padding={50} strength={0.3}>
+                <a href={DEMO_MAIL} className="btn btn--light btn--lg" target="_blank" rel="noopener noreferrer">
+                  Book a demo <IconArrow width={18} height={18} />
+                </a>
+              </Magnet>
+              <Magnet padding={50} strength={0.3}>
+                <Link to="/contact" className="btn btn--ghost btn--lg" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+                  Contact Us
+                </Link>
+              </Magnet>
+            </div>
+            <span className="contact__alt mono">or write to hello.tech@studiomh02.com</span>
+          </div>
         </motion.div>
       </section>
     </main>

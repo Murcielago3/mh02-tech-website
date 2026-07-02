@@ -15,21 +15,21 @@ const fadeUp = {
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
-const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
+const DEMO_MAIL = 'https://mail.google.com/mail/?view=cm&fs=1&to=hello.tech@studiomh02.com&su=MH02%20Dashboard%20demo&body=Hi%20there%2C%0A%0AI%20would%20like%20to%20get%20a%20demo%20of%20the%20MH02%20Dashboard.%20Please%20let%20me%20know%20what%20the%20next%20steps%20are%20to%20set%20this%20up.%0A%0AThanks!';
 
 const MODULES = [
-  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'You can see exactly where a project stands — hours, budget, timeline. When you\'re estimating a new one, it pulls from your team\'s actual history so you\'re not guessing.', meta: 'live stats · estimates' },
-  { icon: IconUsers, n: '02', title: 'Clients, Team & HR', desc: 'One record per client, one per person. Roles, reporting lines, increments, appraisals, holidays — all in one spot instead of scattered across email threads and spreadsheets.', meta: 'crm · org · hr' },
+  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'You can see exactly where a project stands - hours, budget, timeline. When you\'re estimating a new one, it pulls from your team\'s actual history so you\'re not guessing.', meta: 'live stats · estimates' },
+  { icon: IconUsers, n: '02', title: 'Clients, Team & HR', desc: 'One record per client, one per person. Roles, reporting lines, increments, appraisals, holidays - all in one spot instead of scattered across email threads and spreadsheets.', meta: 'crm · org · hr' },
   { icon: IconClock, n: '03', title: 'Timesheets', desc: 'Submit weekly, approve weekly. If someone forgets, they get a nudge. You don\'t have to chase anyone.', meta: 'approvals · auto-nudge' },
-  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Once the hours and expenses are approved, the invoice puts itself together. Handles ₹, PAN, Aadhaar and TDS — the stuff your accountant actually cares about.', meta: 'auto-draft · tds-aware' },
-  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'When something happens — a submission, an approval, a rejection — the right people get tagged in the right channel. No one has to forward a thing.', meta: 'real-time · fail-safe' },
+  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Once the hours and expenses are approved, the invoice puts itself together. Handles ₹, PAN, Aadhaar and TDS - the stuff your accountant actually cares about.', meta: 'auto-draft · tds-aware' },
+  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'When something happens - a submission, an approval, a rejection - the right people get tagged in the right channel. No one has to forward a thing.', meta: 'real-time · fail-safe' },
   { icon: IconTerminal, n: '06', title: 'Reporting Engine', desc: 'On the 1st of every month, a clean summary of the previous month appears in Slack. Nobody put it together. It just shows up.', meta: 'scheduled · 1st 09:00' },
 ];
 
 const ARCH = [
   { stage: [{ label: 'Web App', sub: 'fast, modern UI' }] },
   { stage: [{ label: 'API Core', sub: 'async · typed' }] },
-  { stage: [{ label: 'PostgreSQL', sub: 'source of truth' }, { label: 'Redis', sub: 'queue · cache' }] },
+  { stage: [{ label: 'Database', sub: 'source of truth' }, { label: 'Cache', sub: 'queue · memory' }] },
   { stage: [{ label: 'Workers', sub: 'jobs · schedules' }] },
   { stage: [{ label: 'Slack', sub: 'where your team lives' }] },
 ];
@@ -62,7 +62,7 @@ export default function Product() {
           >
             <span className="eyebrow">[ PLATFORM DEEP DIVE ]</span>
             <h1 className="prod-hero__title">
-              MH02 <em>Dashboard.</em>
+              Ops <em>Dashboard.</em>
             </h1>
             <p className="prod-hero__tag">
               One tool for everything your studio runs on.
@@ -74,7 +74,7 @@ export default function Product() {
             </p>
             <div className="prod-hero__cta">
               <Magnet padding={50} strength={0.3}>
-                <a href={DEMO_MAIL} className="btn btn--primary">Book a demo <IconArrow width={18} height={18} /></a>
+                <a href={DEMO_MAIL} className="btn btn--primary" target="_blank" rel="noopener noreferrer">Book a demo <IconArrow width={18} height={18} /></a>
               </Magnet>
               <Link to="/#tour" className="btn btn--ghost">Try the live tour</Link>
             </div>
@@ -88,7 +88,7 @@ export default function Product() {
           >
             <div className="dash">
               <div className="dash__bar">
-                <span className="dash__dot" /><span className="dash__title mono">mh02 · your studio today</span>
+                <span className="dash__dot" /><span className="dash__title mono">ops · your studio today</span>
               </div>
               <div className="dash__grid">
                 {[
@@ -140,7 +140,6 @@ export default function Product() {
       <section className="section" id="modules">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 01 - MODULES ]</span>
             <h2 className="section-title">Six modules. One platform.<br />Nothing else to juggle.</h2>
           </motion.div>
           <div className="mod-grid">
@@ -168,11 +167,10 @@ export default function Product() {
       <section className="section arch" id="architecture">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 02 - UNDER THE HOOD ]</span>
             <h2 className="section-title">Nothing fancy under the hood.<br /><em>That's the point.</em></h2>
             <p className="section__lead">
-              It's a containerised stack your engineers can actually read through. Enterprise
-              deployments live entirely inside your network.
+              It's a containerised stack your engineers can actually read through. We manage the
+              infrastructure so you don't have to worry about a thing.
             </p>
           </motion.div>
           <motion.div className="arch__flow" {...fadeUp}>
@@ -197,7 +195,6 @@ export default function Product() {
       <section className="section">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 03 - AUTOMATION ]</span>
             <h2 className="section-title">Runs on autopilot, every week.</h2>
           </motion.div>
           <div className="sched">
@@ -219,7 +216,6 @@ export default function Product() {
       <section className="section">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 04 - ACCESS CONTROL ]</span>
             <h2 className="section-title">Four roles. Everyone sees only what they should.</h2>
           </motion.div>
           <div className="roles-grid">
@@ -241,14 +237,13 @@ export default function Product() {
       {/* ───────────────────────── CTA ────────────────────────── */}
       <section className="section prod-cta">
         <motion.div className="prod-cta__panel container" {...fadeUp}>
-          <span className="eyebrow">[ GET STARTED ]</span>
           <h2 className="prod-cta__title">
             Want to see this <span className="text-grad">running with your data?</span>
           </h2>
           <p className="prod-cta__sub">We'll set it up around your workflows and deploy it wherever you want it.</p>
           <div className="prod-cta__btns">
             <Magnet padding={50} strength={0.3}>
-              <a href={DEMO_MAIL} className="btn btn--light btn--lg">Book a demo <IconArrow width={18} height={18} /></a>
+              <a href={DEMO_MAIL} className="btn btn--light btn--lg" target="_blank" rel="noopener noreferrer">Book a demo <IconArrow width={18} height={18} /></a>
             </Magnet>
             <Link to="/#pricing" className="btn btn--ghost">See pricing</Link>
           </div>

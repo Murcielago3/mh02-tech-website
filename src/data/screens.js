@@ -11,11 +11,11 @@ export const SCREENS = [
     image: '/preview/admin-dash.png',
     title: 'Your morning dashboard.',
     caption:
-      'Open this first thing. You can see what\'s pending, who needs to do what, and what just happened — without asking anyone.',
+      'Open this first thing. You can see what\'s pending, who needs to do what, and what just happened - without asking anyone.',
     hotspots: [
-      { x: 26, y: 26, title: 'Live numbers',       note: 'Studio-wide stats, always up to date.' },
-      { x: 55, y: 62, title: 'Activity feed',   note: 'A stream of everything that just happened.' },
-      { x: 82, y: 24, title: 'Team snapshot',   note: 'Who\'s on, who\'s off. Quick glance.' },
+      { x: 26, y: 26, title: 'Live numbers', note: 'Studio-wide stats, always up to date.' },
+      { x: 55, y: 62, title: 'Activity feed', note: 'A stream of everything that just happened.' },
+      { x: 82, y: 24, title: 'Team snapshot', note: 'Who\'s on, who\'s off. Quick glance.' },
     ],
   },
   {
@@ -26,10 +26,10 @@ export const SCREENS = [
     image: '/preview/add-client.png',
     title: 'Add a client in about a minute.',
     caption:
-      'Fill in the basics, hit save. Every project, invoice and conversation with that client connects back to this record. No spreadsheet required.',
+      'Fill in the basics, hit save. Every project, invoice and billing with that client connects back to this record. No spreadsheet required.',
     hotspots: [
       { x: 40, y: 32, title: 'Just the fields you need', note: 'No bloat. Just what matters for your studio.' },
-      { x: 68, y: 74, title: 'One-click save',    note: 'Shows up everywhere in the app right away.' },
+      { x: 68, y: 74, title: 'One-click save', note: 'Shows up everywhere in the app right away.' },
     ],
   },
   {
@@ -40,10 +40,10 @@ export const SCREENS = [
     image: '/preview/employees-tab.png',
     title: 'Everyone on one screen.',
     caption:
-      'Your whole team — role, reporting line, status. Need to onboard someone or change a title? Do it here, not through an HR ticket.',
+      'Your whole team - role, reporting line, status. Need to onboard someone or change a title? Do it here, not through an HR ticket.',
     hotspots: [
       { x: 22, y: 38, title: 'Roles + reporting', note: 'Your org chart as a filterable table.' },
-      { x: 78, y: 42, title: 'Quick actions',      note: 'Change status without leaving the row.' },
+      { x: 78, y: 42, title: 'Quick actions', note: 'Change status without leaving the row.' },
     ],
   },
   {
@@ -54,10 +54,10 @@ export const SCREENS = [
     image: '/preview/hr-increment.png',
     title: 'HR stuff, where it belongs.',
     caption:
-      'Increments, appraisals, public holidays, payroll context — recorded against the person, not lost in someone\'s inbox.',
+      'Increments, appraisals, public holidays, payroll context - recorded against the person, not lost in someone\'s inbox.',
     hotspots: [
       { x: 32, y: 44, title: 'Increment history', note: 'Full record, per person, always visible.' },
-      { x: 72, y: 66, title: 'Approval routing',   note: 'Goes to the right approver automatically.' },
+      { x: 72, y: 66, title: 'Approval routing', note: 'Goes to the right approver automatically.' },
     ],
   },
   {
@@ -68,10 +68,10 @@ export const SCREENS = [
     image: '/preview/project-stats-1.png',
     title: 'See where each project actually stands.',
     caption:
-      'Hours, budget, delivery progress — one screen per project. Leadership can check in without scheduling a meeting.',
+      'Hours, budget, delivery progress - one screen per project. Leadership can check in without scheduling a meeting.',
     hotspots: [
       { x: 30, y: 34, title: 'Project stats', note: 'Hours, budget and progress in real time.' },
-      { x: 66, y: 58, title: 'Delivery timeline',   note: 'What\'s shipped, what\'s coming.' },
+      { x: 66, y: 58, title: 'Delivery timeline', note: 'What\'s shipped, what\'s coming.' },
     ],
   },
   {
@@ -85,7 +85,7 @@ export const SCREENS = [
       'New pitch? The system looks at how long similar work actually took your team and gives you a range. You go in knowing, not hoping.',
     hotspots: [
       { x: 38, y: 40, title: 'Data-backed lines', note: 'Based on how your team actually works.' },
-      { x: 68, y: 72, title: 'Confidence bands',  note: 'So you know when you\'re stretching it.' },
+      { x: 68, y: 72, title: 'Confidence bands', note: 'So you know when you\'re stretching it.' },
     ],
   },
   {
@@ -99,7 +99,7 @@ export const SCREENS = [
       'The hours are logged, the expenses are approved. The invoice assembles itself from that data. Accounts reviews it and hits send. Five minutes, tops.',
     hotspots: [
       { x: 44, y: 38, title: 'Auto-drafted', note: 'Built from approved hours and expenses.' },
-      { x: 72, y: 78, title: 'Send in one click', note: 'PDF, email, ledger entry — done.' },
+      { x: 72, y: 78, title: 'Send in one click', note: 'PDF, email, ledger entry - done.' },
     ],
   },
   {

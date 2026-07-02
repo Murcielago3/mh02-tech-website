@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Wasted Vindey';
+  src: url('./assets/fonts/Wasted-Vindey.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MILKER';
+  src: url('./assets/fonts/Milker.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── Reset ──────────────────────────────────────────────────── */
 *,
 *::before,
@@ -22,6 +38,13 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05); /* Optional shadow to separate from footer */
 }
 
 /* ─── Design Tokens - light green + white ────────────────────── */
@@ -55,10 +78,9 @@ body {
   --ink-text-secondary: #b9cfc2;
   --ink-border: rgba(242, 248, 244, 0.16);
 
-  /* Type: Archivo Black = heavy squared display slab, Archivo = strong sans,
-     Fraunces (italic) = luxury serif used only for green accent phrases */
-  --font-display: 'Archivo Black', 'Archivo', sans-serif;
-  --font-accent: 'Fraunces', Georgia, serif;
+  /* Type: MILKER = heavy squared display slab, Wasted Vindey = secondary accent */
+  --font-display: 'MILKER', 'Archivo Black', 'Archivo', sans-serif;
+  --font-accent: 'Wasted Vindey', 'Fraunces', Georgia, serif;
   --font-sans: 'Archivo', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;

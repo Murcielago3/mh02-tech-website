@@ -97,7 +97,6 @@ const Loader = ({ onComplete }) => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <b>┌</b> 000,000
         </motion.span>
         <motion.span
           className="loader__coord loader__coord--tr mono"
@@ -105,7 +104,6 @@ const Loader = ({ onComplete }) => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          MH02·2026 <b>┐</b>
         </motion.span>
         <motion.span
           className="loader__coord loader__coord--bl mono"
@@ -113,7 +111,6 @@ const Loader = ({ onComplete }) => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <b>└</b> BOOTING DASHBOARD
         </motion.span>
         <motion.span
           className="loader__coord loader__coord--br mono"
@@ -121,7 +118,6 @@ const Loader = ({ onComplete }) => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          v.01.00 <b>┘</b>
         </motion.span>
 
         {/* Center block */}

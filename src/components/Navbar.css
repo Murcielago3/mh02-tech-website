@@ -10,14 +10,11 @@
   align-items: center;
   transition: background var(--transition-base), border-color var(--transition-base),
     backdrop-filter var(--transition-base), box-shadow var(--transition-base);
-  border-bottom: 1px solid transparent;
 }
 .nav--scrolled {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-bottom-color: var(--border);
-  box-shadow: 0 1px 24px rgba(16, 35, 26, 0.05);
 }
 
 .nav__inner {
@@ -27,7 +24,8 @@
   padding: 0 var(--space-xl);
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  justify-content: space-between;
+  position: relative;
 }
 
 /* ── Brand ──────────────────────────────────────────────────── */
@@ -37,24 +35,10 @@
   gap: 0.6rem;
   text-decoration: none;
 }
-.nav__mark {
-  display: inline-flex;
-  color: var(--green);
-}
-.nav__wordmark {
-  font-family: var(--font-display);
-  font-weight: 620;
-  font-size: 1.12rem;
-  letter-spacing: 0.01em;
-  color: var(--text);
-}
-.nav__wordmark span {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 440;
-  font-size: 1.1em;
-  color: var(--green);
-  margin-left: 0.3rem;
+.nav__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .nav__rule {
@@ -65,23 +49,45 @@
 
 /* ── Links ──────────────────────────────────────────────────── */
 .nav__links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-right: auto;
+  gap: 0.15rem;
+  background: rgba(248, 251, 249, 0.6);
+  padding: 0.35rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+}
+.nav__link-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__hover-pill {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 100px;
+  z-index: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0,0,0,0.02);
 }
 .nav__link {
-  padding: 0.45rem 0.8rem;
+  position: relative;
+  z-index: 1;
+  padding: 0.5rem 1.1rem;
   border-radius: var(--radius-full);
   font-size: 0.86rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color var(--transition-fast), background var(--transition-fast);
+  transition: color var(--transition-fast);
 }
-.nav__link:hover {
+.nav__link:hover, .nav__link--active {
   color: var(--text);
-  background: var(--green-pale);
 }
 
 /* ── CTA ────────────────────────────────────────────────────── */

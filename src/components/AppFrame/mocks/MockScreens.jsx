@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import './mocks.css';
 
 /* ═══════════════════════════════════════════════════════════
-   Fictional demo data — entirely made up for illustration
+   Fictional demo data - entirely made up for illustration
    ═══════════════════════════════════════════════════════════ */
 
 const INR = (n) => `₹${n.toLocaleString('en-IN')}`;
@@ -82,7 +82,7 @@ const Kpi = ({ tint, icon, label, value, sub }) => (
   </div>
 );
 
-/* Donut chart via conic-gradient — segments = [ [percent, color], ... ] */
+/* Donut chart via conic-gradient - segments = [ [percent, color], ... ] */
 const Donut = ({ segments, size = 92 }) => {
   let acc = 0;
   const stops = segments.map(([pct, col]) => {
@@ -223,7 +223,7 @@ const ClientsMock = () => (
             <input type="text" defaultValue="12th Floor, Banjara Hills, Hyderabad 500034" readOnly />
           </label>
           <div className="mk-form__foot">
-            <span className="mk-form__note mono">DRAFT — 6 OF 8 REQUIRED FIELDS COMPLETE</span>
+            <span className="mk-form__note mono">DRAFT - 6 OF 8 REQUIRED FIELDS COMPLETE</span>
             <div className="mk-form__actions">
               <button type="button" className="mk-btn mk-btn--ghost">Cancel</button>
               <button type="button" className="mk-btn">Save client</button>
@@ -529,7 +529,7 @@ const ReportsMock = () => (
 );
 
 /* ═══════════════════════════════════════════════════════════
-   Registry — id → mock component
+   Registry - id → mock component
    ═══════════════════════════════════════════════════════════ */
 export const MOCK_SCREENS = {
   dashboard:  DashboardMock,

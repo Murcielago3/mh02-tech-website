@@ -9,3 +9,4 @@ export { default as ClickSpark } from './ClickSpark.jsx';
 export { default as LetterGlitch } from './LetterGlitch.jsx';
 export { default as GradientText } from './GradientText.jsx';
 export { default as TiltedCard } from './TiltedCard.jsx';
+export { default as SideRays } from './SideRays.jsx';
