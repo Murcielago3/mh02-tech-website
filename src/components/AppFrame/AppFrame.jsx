@@ -95,7 +95,7 @@ const AppFrame = ({
         <div className="appfr__chrome">
           <span className="appfr__lights"><i /><i /><i /></span>
           <span className="appfr__url">
-            <span className="appfr__url-lock" aria-hidden="true">�-�</span>
+            <span className="appfr__url-lock" aria-hidden="true">🔒</span>
             <span className="appfr__url-txt mono">{screen.url}</span>
           </span>
           <div className="appfr__chrome-right">
@@ -117,7 +117,7 @@ const AppFrame = ({
         {/* ── Sidebar ──────────────────────────────────────── */}
         <nav className="appfr__side" ref={sidebarRef} aria-label="App sections">
           <div className="appfr__brand">
-            <span className="appfr__brand-mark">�-�</span>
+            <span className="appfr__brand-mark">◪</span>
             {!compact && <span className="appfr__brand-txt">MH02</span>}
           </div>
           <div className="appfr__nav">

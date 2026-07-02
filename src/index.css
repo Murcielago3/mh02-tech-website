@@ -24,38 +24,38 @@ body {
   min-height: 100vh;
 }
 
-/* ─── Design Tokens ──────────────────────────────────────────── */
+/* ─── Design Tokens - dark "deep forest" B2B theme ───────────── */
 :root {
-  /* Brand greens */
-  --green: #287457;
-  --green-bright: #2f8a54;
-  --green-deep: #1f5d44;
-  --green-nav: #287457;
-  --green-pale: rgba(40, 117, 71, 0.07);
-  --green-line: rgba(40, 117, 71, 0.22);
-  --green-glow: rgba(40, 117, 71, 0.28);
+  /* Brand greens (dark-theme tuned) */
+  --green: #2fbd7f;
+  --green-bright: #3ce39a;
+  --green-deep: #1a9c66;
+  --green-ink: #0c3d29;
+  --green-pale: rgba(60, 227, 154, 0.07);
+  --green-line: rgba(60, 227, 154, 0.24);
+  --green-glow: rgba(60, 227, 154, 0.32);
 
-  /* Surfaces - clean light, faintly green-tinted paper */
-  --bg: #ffffff;
-  --bg-2: #f5f8f6;
-  --bg-elev: #ffffff;
-  --surface: rgba(40, 117, 71, 0.028);
-  --surface-2: rgba(15, 30, 23, 0.04);
-  --border: rgba(15, 30, 23, 0.10);
-  --border-strong: rgba(15, 30, 23, 0.16);
+  /* Surfaces - near-black with a green undertone */
+  --bg: #070d0b;
+  --bg-2: #0a1210;
+  --bg-elev: #0e1815;
+  --surface: rgba(180, 220, 200, 0.035);
+  --surface-2: rgba(180, 220, 200, 0.06);
+  --border: rgba(163, 196, 180, 0.12);
+  --border-strong: rgba(163, 196, 180, 0.2);
 
   /* Text */
-  --text: #0f1a14;
-  --text-secondary: #46544c;
-  --text-muted: #6c776f;
-  --text-faint: #a7b1aa;
+  --text: #eaf3ee;
+  --text-secondary: #a8bab0;
+  --text-muted: #74857c;
+  --text-faint: #4d5c54;
 
   /* Type */
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
 
-  --navbar-height: 68px;
+  --navbar-height: 72px;
   --maxw: 1180px;
 
   --space-xs: 0.25rem;
@@ -80,15 +80,15 @@ body {
 
 /* ─── Selection ──────────────────────────────────────────────── */
 ::selection {
-  background: rgba(40, 117, 71, 0.18);
-  color: #0f1a14;
+  background: rgba(60, 227, 154, 0.28);
+  color: #eaf3ee;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #eef2f0; }
-::-webkit-scrollbar-thumb { background: #c4d0c9; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #2f8a54; }
+::-webkit-scrollbar-track { background: #0a1210; }
+::-webkit-scrollbar-thumb { background: #22352c; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-deep); }
 
 #root {
   min-height: 100vh;
@@ -102,7 +102,7 @@ body {
   padding-right: var(--space-xl);
 }
 
-/* Monospace technical eyebrow label, e.g. "[ 01 / CAPABILITIES ]" */
+/* Monospace technical eyebrow label, e.g. "[ 01 / PLATFORM ]" */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -129,6 +129,10 @@ body {
   color: var(--text);
   font-size: clamp(1.9rem, 4vw, 3.1rem);
 }
+.section-title em {
+  font-style: normal;
+  color: var(--green-bright);
+}
 
 .text-grad {
   background: linear-gradient(120deg, var(--text) 0%, var(--green-bright) 55%, var(--green) 100%);
@@ -142,9 +146,26 @@ body {
 /* Faint background grid lines for a technical, engineered feel */
 .grid-bg {
   background-image:
-    linear-gradient(to right, rgba(15, 30, 23, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 30, 23, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(163, 196, 180, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(163, 196, 180, 0.04) 1px, transparent 1px);
   background-size: 64px 64px;
+}
+
+/* ─── AppFrame stays a light "app in a browser" inside dark UI ── */
+.appfr {
+  --text: #0f1a14;
+  --text-secondary: #46544c;
+  --text-muted: #6c776f;
+  --border: rgba(15, 30, 23, 0.1);
+  --border-strong: rgba(15, 30, 23, 0.16);
+  --green: #287457;
+  --green-bright: #2f8a54;
+  --green-pale: rgba(40, 117, 71, 0.07);
+  --green-line: rgba(40, 117, 71, 0.22);
+  --surface: rgba(40, 117, 71, 0.028);
+  box-shadow: 0 0 0 1px rgba(163, 196, 180, 0.14), 0 50px 120px -40px rgba(0, 0, 0, 0.8),
+    0 0 90px -30px var(--green-glow) !important;
+  border-color: rgba(163, 196, 180, 0.2) !important;
 }
 
 @media (max-width: 768px) {

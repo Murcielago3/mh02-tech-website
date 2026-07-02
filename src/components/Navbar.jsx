@@ -4,10 +4,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const LINKS = [
-  { label: 'Work', to: '/#work', },
-  { label: 'Product', to: '/product', },
-  { label: 'Approach', to: '/#approach', },
-  { label: 'Contact', to: '/#contact', },
+  { label: 'Platform', to: '/#platform' },
+  { label: 'Live tour', to: '/#tour' },
+  { label: 'Pricing', to: '/#pricing' },
+  { label: 'FAQ', to: '/#faq' },
+  { label: 'Deep dive', to: '/product' },
 ];
 
 const Navbar = ({ show = true }) => {
@@ -43,9 +44,14 @@ const Navbar = ({ show = true }) => {
     >
       <div className="nav__inner">
         <Link to="/" className="nav__brand">
-          <span className="nav__mark" aria-hidden="true">◪</span>
+          <span className="nav__mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
+              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#052015" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+          </span>
           <span className="nav__wordmark">
-            STUDIO<span>MH02</span>
+            MH02<span>Dashboard</span>
           </span>
         </Link>
 
@@ -55,21 +61,19 @@ const Navbar = ({ show = true }) => {
           {LINKS.map((l) =>
             l.to.startsWith('/#') ? (
               <a key={l.label} href={l.to} className="nav__link" onClick={(e) => handleAnchor(e, l.to)}>
-                <i className="nav__link-n">{l.n}</i>
                 <span>{l.label}</span>
               </a>
             ) : (
               <Link key={l.label} to={l.to} className="nav__link">
-                <i className="nav__link-n">{l.n}</i>
                 <span>{l.label}</span>
               </Link>
             )
           )}
         </nav>
 
-        <a href="mailto:xyz@studiomh02.com" className="nav__cta">
+        <a href="mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo" className="nav__cta">
           <span className="nav__cta-dot" />
-          Book a call
+          Book a demo
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

@@ -6,7 +6,7 @@ export const SCREENS = [
   {
     id: 'dashboard',
     label: 'Dashboard',
-    icon: '�-�',
+    icon: '▦',
     url: 'mh02.app/dashboard',
     image: '/preview/admin-dash.png',
     title: 'The Studio Overview.',
@@ -21,7 +21,7 @@ export const SCREENS = [
   {
     id: 'clients',
     label: 'Clients',
-    icon: '�-�',
+    icon: '◉',
     url: 'mh02.app/clients/new',
     image: '/preview/add-client.png',
     title: 'One home for every client.',
@@ -49,7 +49,7 @@ export const SCREENS = [
   {
     id: 'hr',
     label: 'HR',
-    icon: '�-�',
+    icon: '✦',
     url: 'mh02.app/hr/increments',
     image: '/preview/hr-increment.png',
     title: 'HR, without the friction.',
@@ -77,7 +77,7 @@ export const SCREENS = [
   {
     id: 'estimation',
     label: 'Estimation',
-    icon: '�-�',
+    icon: '∑',
     url: 'mh02.app/projects/estimate',
     image: '/preview/project-estimation.png',
     title: 'Estimate with confidence.',
@@ -91,7 +91,7 @@ export const SCREENS = [
   {
     id: 'invoicing',
     label: 'Invoicing',
-    icon: '�-�',
+    icon: '▥',
     url: 'mh02.app/invoices/new',
     image: '/preview/invoice-generation.png',
     title: 'Invoices, generated.',
@@ -105,7 +105,7 @@ export const SCREENS = [
   {
     id: 'reports',
     label: 'Reports',
-    icon: '�-�',
+    icon: '◫',
     url: 'mh02.app/projects/report',
     image: '/preview/project-report.png',
     title: 'Monthly summaries, delivered.',

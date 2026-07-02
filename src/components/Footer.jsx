@@ -9,16 +9,21 @@ const Footer = () => {
       <div className="foot__inner">
         {/* Left: identity block */}
         <div className="foot__ident">
-          <div className="foot__mark" aria-hidden="true">◪</div>
+          <div className="foot__mark" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
+              <path d="M8 15.5v-6l4 4 4-4v6" stroke="#052015" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+          </div>
           <div className="foot__ident-body">
-            <span className="foot__ident-name">STUDIOMH02</span>
-            <span className="foot__ident-sub mono">SOFTWARE FOR STUDIOS · EST. 2026</span>
+            <span className="foot__ident-name">MH02 DASHBOARD</span>
+            <span className="foot__ident-sub mono">THE OPERATIONS PLATFORM FOR STUDIOS</span>
           </div>
         </div>
 
         {/* Middle: giant editorial CTA */}
-        <a href="mailto:xyz@studiomh02.com" className="foot__cta">
-          <span className="foot__cta-lead mono">→ START A CONVERSATION</span>
+        <a href="mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo" className="foot__cta">
+          <span className="foot__cta-lead mono">→ BOOK A DEMO</span>
           <span className="foot__cta-line">
             xyz@studiomh02.com
             <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
@@ -30,23 +35,24 @@ const Footer = () => {
         {/* Right: navigation columns + meta */}
         <div className="foot__grid">
           <div className="foot__col">
-            <span className="foot__col-h mono">01 · SITE</span>
-            <a href="/#work">Work</a>
-            <Link to="/product">Product</Link>
-            <a href="/#approach">Approach</a>
+            <span className="foot__col-h mono">01 · PRODUCT</span>
+            <a href="/#platform">Platform</a>
+            <a href="/#tour">Live tour</a>
+            <a href="/#pricing">Pricing</a>
+            <Link to="/product">Deep dive</Link>
           </div>
           <div className="foot__col">
-            <span className="foot__col-h mono">02 · REACH</span>
-            <a href="mailto:xyz@studiomh02.com">Email</a>
-            <a href="https://cal.com" target="_blank" rel="noreferrer">Book call</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+            <span className="foot__col-h mono">02 · SALES</span>
+            <a href="mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo">Book a demo</a>
+            <a href="mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20pricing">Pricing enquiry</a>
+            <a href="mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20support">Support</a>
           </div>
           <div className="foot__col">
-            <span className="foot__col-h mono">03 · WHERE</span>
+            <span className="foot__col-h mono">03 · COMPANY</span>
+            <span>Built by STUDIOMH02</span>
             <span>New Delhi · IST</span>
-            <span>Mon–Fri · 10–19</span>
             <span className="foot__status">
-              <i /> Accepting new clients
+              <i /> Onboarding new teams
             </span>
           </div>
         </div>
@@ -54,12 +60,12 @@ const Footer = () => {
         {/* Bottom rule + fine print */}
         <div className="foot__fine mono">
           <span>© {YEAR} STUDIOMH02 · ALL RIGHTS RESERVED</span>
-          <span>28.6139° N — 77.2090° E</span>
+          <span>MH02 DASHBOARD · V2</span>
         </div>
       </div>
 
       {/* Giant background wordmark */}
-      <div className="foot__ghost" aria-hidden="true">STUDIOMH02</div>
+      <div className="foot__ghost" aria-hidden="true">MH02</div>
     </footer>
   );
 };

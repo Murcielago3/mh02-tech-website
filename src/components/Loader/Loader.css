@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #ffffff;
+  background: var(--bg);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@
   line-height: 0.9;
 }
 .loader__brand {
-  min-width: 11ch;
+  min-width: 14ch;
   text-align: center;
   font-variant-ligatures: none;
 }
@@ -71,25 +71,25 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  border-bottom: 1px solid var(--text);
+  border-bottom: 1px solid var(--border-strong);
 }
 .loader__tick {
   width: 1px;
   height: 6px;
-  background: var(--text-muted);
+  background: var(--text-faint);
 }
 .loader__tick--major {
   height: 12px;
-  background: var(--text);
+  background: var(--text-muted);
 }
 .loader__ruler-fill {
   position: absolute;
   left: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--green);
+  background: var(--green-bright);
   transition: width 60ms linear;
-  box-shadow: 0 0 10px rgba(40, 117, 71, 0.35);
+  box-shadow: 0 0 10px var(--green-glow);
 }
 
 .loader__status {

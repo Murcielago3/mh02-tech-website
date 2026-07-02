@@ -37,7 +37,7 @@ function App() {
         {playLoader && <Loader onComplete={handleComplete} />}
         <Navbar show={loaded} />
         <Routes>
-          <Route path="/" element={<Home ready={loaded} />} />
+          <Route path="/" element={<Home introDone={loaded} />} />
           <Route path="/product" element={<Product />} />
         </Routes>
         <Footer />

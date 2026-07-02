@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import './Loader.css';
 
 const SCRAMBLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/+*<>';
-const TARGET = 'STUDIO/MH02';
+const TARGET = 'MH02/DASHBOARD';
 const DURATION = 1900;    // total loader time
 const COUNT_DUR = 1600;   // counter animation
 
@@ -14,7 +14,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
  * A single clean pass in ~2s, then unmounts.
  */
 const Loader = ({ onComplete }) => {
-  const [display, setDisplay] = useState('___________');
+  const [display, setDisplay] = useState('______________');
   const [count, setCount] = useState(0);
   const [exiting, setExiting] = useState(false);
   const [gone, setGone] = useState(false);
@@ -113,7 +113,7 @@ const Loader = ({ onComplete }) => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <b>└</b> BOOTING STUDIO
+          <b>└</b> BOOTING DASHBOARD
         </motion.span>
         <motion.span
           className="loader__coord loader__coord--br mono"
@@ -148,7 +148,7 @@ const Loader = ({ onComplete }) => {
           </div>
 
           <div className="loader__status mono">
-            <span>→ INITIALIZING STUDIO</span>
+            <span>→ INITIALIZING PLATFORM</span>
             <span className="loader__count">[ {String(count).padStart(3, '0')} / 100 ]</span>
           </div>
         </motion.div>

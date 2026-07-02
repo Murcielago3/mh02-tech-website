@@ -1,12 +1,16 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
   DotGrid, SpotlightCard, DecryptedText, ShinyText, CountUp,
-  RotatingText, Magnet, GradientText,
+  RotatingText, Magnet,
 } from '../components/reactbits';
 import {
-  IconBrowser, IconAutomation, IconShield, IconBolt, IconLayers, IconChart, IconArrow,
+  IconClock, IconReceipt, IconBell, IconChart, IconUsers, IconTerminal,
+  IconShield, IconBolt, IconLayers, IconArrow, IconDatabase,
 } from '../components/Icons.jsx';
+import AppFrame from '../components/AppFrame/AppFrame.jsx';
+import { SCREENS } from '../data/screens.js';
 import './Home.css';
 
 const fadeUp = {
@@ -16,33 +20,184 @@ const fadeUp = {
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
-const CAPABILITIES = [
-  { icon: IconBrowser, n: '01', title: 'Web Platforms', desc: 'Production React & Next.js front-ends and FastAPI back-ends - typed end to end, server-rendered, and shipped on edge infrastructure.', tags: ['React', 'Next.js', 'FastAPI'] },
-  { icon: IconAutomation, n: '02', title: 'Internal Tools & Automation', desc: 'Operations software that runs the business: dashboards, approval flows, scheduled jobs and Slack-native notifications.', tags: ['Celery', 'Webhooks', 'RBAC'] },
-  { icon: IconShield, n: '03', title: 'Security Engineering', desc: 'Threat-modelled architectures, hardened auth, least-privilege access and audited dependencies - security as a default layer.', tags: ['OAuth', 'Auditing', 'Hardening'] },
-  { icon: IconBolt, n: '04', title: 'Performance', desc: 'Sub-100ms interactions, streaming responses and ruthless bundle budgets. We measure everything and ship the fast path.', tags: ['Core Web Vitals', 'Caching', 'Profiling'] },
-  { icon: IconLayers, n: '05', title: 'Systems & Infra', desc: 'Containerised deploys, Postgres at the core, Redis for speed, and reproducible CI/CD pipelines you can trust.', tags: ['Docker', 'Postgres', 'CI/CD'] },
-  { icon: IconChart, n: '06', title: 'Data & Reporting', desc: 'Aggregations, scheduled reports and Block-Kit summaries that put the right numbers in front of the right people, on time.', tags: ['Analytics', 'Reports', 'Pipelines'] },
+const DEMO_MAIL = 'mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20demo';
+
+/* ─── Content ────────────────────────────────────────────────── */
+
+const PAINS = [
+  {
+    title: 'The spreadsheet sprawl',
+    desc: 'Client lists in Sheets, timesheets in forms, invoices in Word. Four sources of truth means zero sources of truth.',
+    fix: 'One platform. One record for every client, project, hour and rupee.',
+  },
+  {
+    title: 'The chasing game',
+    desc: 'Ops spends Friday chasing timesheets, month-end assembling reports and reminding approvers to approve.',
+    fix: 'Automatic Slack nudges tag exactly the people who owe an action.',
+  },
+  {
+    title: 'The invisible month',
+    desc: 'Leadership finds out how the month went weeks after it ended - if anyone had time to compile it at all.',
+    fix: 'A full month-in-review lands in Slack on the 1st, at 09:00, untouched by human hands.',
+  },
 ];
 
-const PROCESS = [
-  { n: '01', title: 'Scope', desc: 'We map the system, its constraints and its edges before a line of code is written.' },
-  { n: '02', title: 'Architect', desc: 'Data models, contracts and infrastructure are designed to scale and stay legible.' },
-  { n: '03', title: 'Build', desc: 'Typed, tested, reviewed. Small increments shipped behind clean interfaces.' },
-  { n: '04', title: 'Harden', desc: 'Security passes, load tests and observability before anything touches production.' },
-  { n: '05', title: 'Operate', desc: 'Monitoring, automation and iteration - we stay close to what we ship.' },
+const MODULES = [
+  { icon: IconChart, n: '01', title: 'Projects & Estimation', desc: 'Live burn, delivery timelines and data-backed estimates rooted in your team’s real velocity - so you never over-promise a client again.', tags: ['Live stats', 'Confidence bands'] },
+  { icon: IconUsers, n: '02', title: 'Clients & Team', desc: 'Every client, project and employee threads back to one clean record. Onboarding, roles and reporting lines without an HR ticket.', tags: ['CRM', 'Org chart'] },
+  { icon: IconClock, n: '03', title: 'Timesheets', desc: 'Weekly submission and approval flows with automatic nudges for anyone missing this week - or last. No chasing required.', tags: ['Approvals', 'Auto-nudge'] },
+  { icon: IconReceipt, n: '04', title: 'Invoicing & Expenses', desc: 'Invoices draft themselves from approved hours and claims. Reimbursements route in ₹ with PAN, Aadhaar and TDS context built in.', tags: ['Auto-draft', 'TDS-aware'] },
+  { icon: IconBell, n: '05', title: 'Slack Automation', desc: 'Six event types routed to the right channel the moment they happen, @tagging the exact people who need to act.', tags: ['Real-time', 'Fail-safe'] },
+  { icon: IconShield, n: '06', title: 'Roles & Access', desc: 'Admin, project manager, employee and accounts each see exactly the surface they need. Nothing more, nothing missing.', tags: ['RBAC', '4 roles'] },
 ];
 
-const STACK = {
-  Frontend: ['React', 'Next.js', 'TypeScript', 'Vite', 'Motion'],
-  Backend: ['FastAPI', 'Python', 'SQLAlchemy', 'Pydantic', 'Celery'],
-  Data: ['PostgreSQL', 'Redis', 'Alembic', 'asyncpg'],
-  Infra: ['Docker', 'Compose', 'Nginx', 'GitHub Actions'],
+const STEPS = [
+  { n: '01', title: 'Book a demo', desc: 'A 30-minute walkthrough on your use case - not a canned pitch. Bring your messiest workflow.' },
+  { n: '02', title: 'We tailor & deploy', desc: 'Your roles, your approval chains, your Slack channels - configured and deployed on your own infrastructure.' },
+  { n: '03', title: 'Your team just works', desc: 'Onboarding takes an afternoon. The reminders, reports and month-end run themselves from day one.' },
+];
+
+const AUTOMATIONS = [
+  { when: 'SUN · 12:00', title: 'Timesheet reminders', desc: 'Everyone missing this week or last gets one bullet, personally @tagged.', channel: '#common' },
+  { when: '1st · 09:00', title: 'Monthly report', desc: 'The previous month, summarised and posted to leadership. Nobody compiled it.', channel: '#management' },
+  { when: 'INSTANT', title: 'Event notifications', desc: 'Submissions, approvals and rejections fire the moment they happen.', channel: 'both' },
+];
+
+const PLANS = [
+  {
+    name: 'Pilot',
+    tag: 'FOR SMALL TEAMS',
+    blurb: 'Up and running fast - prove it on one team before you roll it out.',
+    features: ['Up to 15 seats', 'All core modules', 'Slack automation', 'Email support'],
+    cta: 'Start a pilot',
+    featured: false,
+  },
+  {
+    name: 'Studio',
+    tag: 'MOST POPULAR',
+    blurb: 'The full operations layer for a growing studio or agency.',
+    features: ['Unlimited seats', 'All modules + reporting', 'Custom approval chains', 'Custom Slack workflows', 'Priority support'],
+    cta: 'Book a demo',
+    featured: true,
+  },
+  {
+    name: 'Enterprise',
+    tag: 'SELF-HOSTED',
+    blurb: 'Deployed on your own infrastructure, tailored to your processes.',
+    features: ['Your infra, your data', 'SSO & audit trails', 'Custom modules', 'Dedicated onboarding', 'SLA-backed support'],
+    cta: 'Talk to us',
+    featured: false,
+  },
+];
+
+const FAQS = [
+  {
+    q: 'How long does it take to get started?',
+    a: 'Most teams are live within a week. We configure roles, approval chains and Slack channels with you, migrate your client and team data, and your team onboards in an afternoon - the interface is deliberately simple.',
+  },
+  {
+    q: 'Where does our data live?',
+    a: 'Wherever you want it. MH02 Dashboard deploys as a containerised stack - on our managed infrastructure or entirely on yours. Enterprise deployments keep every byte inside your own network.',
+  },
+  {
+    q: 'Does it replace our existing tools?',
+    a: 'It replaces the operations patchwork - the timesheet forms, expense spreadsheets, invoice templates and reminder rituals. It plugs into Slack rather than replacing it, and exports cleanly to your accounting tools.',
+  },
+  {
+    q: 'Is it built for Indian compliance?',
+    a: 'Yes. Reimbursements and payroll context handle ₹, PAN, Aadhaar and TDS natively. Invoices and exports follow the formats your CA actually asks for.',
+  },
+  {
+    q: 'What if our process is non-standard?',
+    a: 'Every studio’s is. Approval chains, roles, reminder cadences and report formats are configuration, not code - and Enterprise plans include custom modules built for your workflow.',
+  },
+];
+
+/* ─── FAQ item ───────────────────────────────────────────────── */
+const FaqItem = ({ q, a, open, onToggle }) => (
+  <div className={`faq__item ${open ? 'faq__item--open' : ''}`}>
+    <button type="button" className="faq__q" onClick={onToggle} aria-expanded={open}>
+      <span>{q}</span>
+      <span className="faq__mark mono" aria-hidden="true">{open ? '−' : '+'}</span>
+    </button>
+    <AnimatePresence initial={false}>
+      {open && (
+        <motion.div
+          className="faq__a-wrap"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="faq__a">{a}</p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+);
+
+/* ─── Live tour section ──────────────────────────────────────── */
+const TourSection = () => {
+  const [activeId, setActiveId] = useState(SCREENS[0].id);
+  const active = SCREENS.find((s) => s.id === activeId) || SCREENS[0];
+
+  return (
+    <section className="section tour" id="tour">
+      <div className="container">
+        <motion.div className="section__head" {...fadeUp}>
+          <span className="eyebrow">[ 02 - LIVE TOUR ]</span>
+          <h2 className="section-title">Don&apos;t take our word for it.<br /><em>Click around.</em></h2>
+          <p className="section__lead">
+            This is the actual product. Pick a section in the sidebar or press <b>PLAY TOUR</b> and
+            let it drive.
+          </p>
+        </motion.div>
+
+        <motion.div className="tour__grid" {...fadeUp}>
+          <div className="tour__copy">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="tour__inner"
+              >
+                <span className="tour__eyebrow mono">
+                  <i /> NOW SHOWING · {active.label.toUpperCase()}
+                </span>
+                <h3 className="tour__title">{active.title}</h3>
+                <p className="tour__desc">{active.caption}</p>
+
+                <div className="tour__meta mono">
+                  <span>SCREEN · {String(SCREENS.findIndex((s) => s.id === active.id) + 1).padStart(2, '0')}/{String(SCREENS.length).padStart(2, '0')}</span>
+                  <span>{active.url}</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="tour__frame">
+            <AppFrame
+              screens={SCREENS}
+              activeId={activeId}
+              onChange={setActiveId}
+              showTour
+              showHotspots
+              autoStart={false}
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
-const MARQUEE = ['REACT', 'FASTAPI', 'TYPESCRIPT', 'POSTGRESQL', 'REDIS', 'CELERY', 'DOCKER', 'NEXT.JS', 'PYTHON', 'NGINX', 'VITE', 'SQLALCHEMY'];
+/* ═══════════════════════════ Page ═══════════════════════════ */
+export default function Home({ introDone = true }) {
+  const [openFaq, setOpenFaq] = useState(0);
 
-export default function Home({ introDone }) {
   return (
     <main className="home">
       {/* ───────────────────────── HERO ───────────────────────── */}
@@ -53,7 +208,7 @@ export default function Home({ introDone }) {
           transition={{ duration: 1.5, ease: 'easeOut' }}
           style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
-          <DotGrid className="hero__grid" baseColor="#b0c4b8" activeColor="#287457" dotSize={3} />
+          <DotGrid className="hero__grid" baseColor="#16261f" activeColor="#3ce39a" dotSize={3} />
         </motion.div>
         <div className="hero__fade" />
 
@@ -63,43 +218,45 @@ export default function Home({ introDone }) {
           animate={introDone ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
-          <div className="hero__eyebrow eyebrow">[ STUDIOMH02 / TECH DIVISION ]</div>
+          <div className="hero__badge mono">
+            <i /> MH02 DASHBOARD · THE OPERATIONS PLATFORM FOR STUDIOS
+          </div>
 
           <h1 className="hero__title">
-            <DecryptedText text="We engineer software" as="span" className="hero__title-line" />
+            <DecryptedText text="Run your entire studio" as="span" className="hero__title-line" />
             <span className="hero__title-line">
-              with <span className="text-grad">precision</span>{' '}
+              without the{' '}
               <RotatingText
                 className="hero__rotor"
-                words={['& proof.', '& speed.', '& rigor.', '& taste.']}
+                words={['spreadsheets.', 'chasing.', 'month-end panic.', 'busywork.']}
               />
             </span>
           </h1>
 
           <p className="hero__sub">
-            STUDIOMH02 Tech builds high-performance web platforms, internal tools and
-            secure systems - from data model to deployment. No templates, no guesswork.
-            <span className="hero__sub-accent"> Measured, typed, and shipped.</span>
+            Projects, clients, timesheets, invoicing, HR and reporting - one dashboard your whole
+            team actually opens, with Slack automation that chases people
+            <span className="hero__sub-accent"> so you never have to.</span>
           </p>
 
           <div className="hero__cta">
             <Magnet padding={50} strength={0.3}>
-              <a href="#capabilities" className="btn btn--primary">
-                <ShinyText text="Explore capabilities" speed={5} />
+              <a href={DEMO_MAIL} className="btn btn--primary">
+                <ShinyText text="Book a demo" speed={5} />
                 <IconArrow width={18} height={18} />
               </a>
             </Magnet>
-            <Link to="/product" className="btn btn--ghost">
-              <span className="btn__pulse" /> See MH02&nbsp;Dashboard
-            </Link>
+            <a href="#tour" className="btn btn--ghost">
+              <span className="btn__pulse" /> Try the live tour
+            </a>
           </div>
 
           <div className="hero__spec">
             {[
-              ['UPTIME', '99.9', '%'],
-              ['P95 LATENCY', '<90', 'ms'],
-              ['TYPE COVERAGE', '100', '%'],
-              ['SHIP CADENCE', '24/7', ''],
+              ['MODULES', '8', ''],
+              ['MONTH-END', '5', 'min'],
+              ['MISSED REMINDERS', '0', ''],
+              ['REPORTS COMPILED BY HAND', '0', ''],
             ].map(([label, val, unit]) => (
               <div className="hero__spec-item" key={label}>
                 <span className="hero__spec-val mono">{val}<i>{unit}</i></span>
@@ -115,48 +272,57 @@ export default function Home({ introDone }) {
       {/* ──────────────────────── MARQUEE ─────────────────────── */}
       <div className="marquee" aria-hidden="true">
         <div className="marquee__track">
-          {[...MARQUEE, ...MARQUEE].map((t, i) => (
-            <span className="marquee__item mono" key={i}>
-              {t}<i className="marquee__dot" />
-            </span>
-          ))}
+          {[...Array(2)].flatMap((_, r) =>
+            ['PROJECTS', 'CLIENTS', 'TIMESHEETS', 'INVOICING', 'ESTIMATION', 'HR', 'REPORTS', 'SLACK AUTOMATION', 'APPROVALS', 'EXPENSES'].map((t) => (
+              <span className="marquee__item mono" key={`${r}-${t}`}>
+                {t}<i className="marquee__dot" />
+              </span>
+            ))
+          )}
         </div>
       </div>
 
-      {/* ───────────────────────── STATS ──────────────────────── */}
-      <section className="stats container">
-        {[
-          { to: 40, suffix: '+', label: 'Systems shipped', from: 0 },
-          { to: 99.9, suffix: '%', label: 'Mean uptime', decimals: 1 },
-          { to: 12, suffix: 'ms', label: 'Median query time' },
-          { to: 6, suffix: 'yr', label: 'Avg. stack experience' },
-        ].map((s, i) => (
-          <motion.div className="stats__item" key={s.label} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.08 }}>
-            <span className="stats__num">
-              <CountUp to={s.to} suffix={s.suffix} decimals={s.decimals || 0} from={s.from || 0} />
-            </span>
-            <span className="stats__label mono">{s.label}</span>
-          </motion.div>
-        ))}
-      </section>
-
-      {/* ────────────────────── CAPABILITIES ──────────────────── */}
-      <section className="section" id="capabilities">
+      {/* ───────────────────────── PAINS ──────────────────────── */}
+      <section className="section pains" id="why">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 01 - CAPABILITIES ]</span>
-            <h2 className="section-title">A full-stack discipline,<br />built for what ships.</h2>
+            <span className="eyebrow">[ 00 - WHY ]</span>
+            <h2 className="section-title">Your studio doesn&apos;t have an ops problem.<br /><em>It has an ops-tooling problem.</em></h2>
+          </motion.div>
+          <div className="pains__grid">
+            {PAINS.map((p, i) => (
+              <motion.div className="pain-card" key={p.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.08 }}>
+                <span className="pain-card__x mono">✕</span>
+                <h3 className="pain-card__title">{p.title}</h3>
+                <p className="pain-card__desc">{p.desc}</p>
+                <div className="pain-card__fix">
+                  <span className="mono">→</span>
+                  <p>{p.fix}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────── PLATFORM ────────────────────── */}
+      <section className="section" id="platform">
+        <div className="container">
+          <motion.div className="section__head" {...fadeUp}>
+            <span className="eyebrow">[ 01 - PLATFORM ]</span>
+            <h2 className="section-title">Everything your studio runs on,<br />in one place.</h2>
             <p className="section__lead">
-              We don&apos;t hand off slide decks. We design, build and operate the systems that run businesses.
+              Eight modules that share one source of truth - so an approved timesheet becomes a
+              project stat, an invoice line and a Slack notification without anyone touching it.
             </p>
           </motion.div>
 
           <div className="cap-grid">
-            {CAPABILITIES.map((c, i) => {
+            {MODULES.map((c, i) => {
               const Icon = c.icon;
               return (
                 <motion.div key={c.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: (i % 3) * 0.08 }}>
-                  <SpotlightCard className="cap-card">
+                  <SpotlightCard className="cap-card" spotlightColor="rgba(60,227,154,0.12)">
                     <div className="cap-card__top">
                       <span className="cap-card__icon"><Icon /></span>
                       <span className="cap-card__n mono">{c.n}</span>
@@ -171,65 +337,101 @@ export default function Home({ introDone }) {
               );
             })}
           </div>
+
+          <motion.div className="platform-more" {...fadeUp}>
+            <Link to="/product" className="btn btn--ghost">
+              Full platform deep dive <IconArrow width={16} height={16} />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* ──────────────────── FEATURED PRODUCT ────────────────── */}
-      <section className="section product-feat">
+      {/* ═══════════════════════ LIVE TOUR ══════════════════════ */}
+      <TourSection />
+
+      {/* ─────────────────────── AUTOMATION ───────────────────── */}
+      <section className="section autom" id="automation">
         <div className="container">
-          <motion.div className="product-feat__panel" {...fadeUp}>
-            <DotGrid className="product-feat__grid" baseColor="#c7dccf" activeColor="#2f8a54" proximity={150} />
-            <div className="product-feat__inner">
-              <div className="product-feat__copy">
-                <span className="eyebrow">[ FEATURED BUILD ]</span>
-                <h2 className="product-feat__title">
-                  <GradientText speed={7} colors={['#287457', '#2f8a54', '#1f5d44', '#34965d', '#287457']}>MH02<br />Dashboard</GradientText>
-                </h2>
-                <p className="product-feat__tagline">The operating system for a studio.</p>
-                <p className="product-feat__desc">
-                  A full operations platform - timesheets, reimbursements, monthly reporting and
-                  Slack-native reminders - powered by FastAPI, Celery and Postgres. Designed,
-                  built and run in-house.
-                </p>
-                <ul className="product-feat__points">
-                  {['Role-based access for 4 team functions', 'Automated weekly & monthly Slack workflows', 'Async Python core, containerised deploy'].map((p) => (
-                    <li key={p}><span className="dotmark" />{p}</li>
-                  ))}
-                </ul>
-                <Link to="/product" className="btn btn--primary">
-                  Explore MH02 Dashboard <IconArrow width={18} height={18} />
-                </Link>
-              </div>
-              <div className="product-feat__visual">
-                <div className="term">
-                  <div className="term__bar">
-                    <i /><i /><i />
-                    <span className="mono">celery@mh02-dashboard - beat</span>
+          <motion.div className="autom__panel" {...fadeUp}>
+            <div className="autom__copy">
+              <span className="eyebrow">[ 03 - AUTOMATION ]</span>
+              <h2 className="section-title">The cadence<br />runs itself.</h2>
+              <p className="autom__lead">
+                MH02 Dashboard doesn&apos;t just store your operations data - it acts on it. Reminders,
+                reports and notifications land in Slack on schedule, every time, without a human
+                in the loop.
+              </p>
+              <div className="autom__rows">
+                {AUTOMATIONS.map((s) => (
+                  <div className="autom__row" key={s.title}>
+                    <span className="autom__when mono">{s.when}</span>
+                    <div className="autom__body">
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                    </div>
+                    <span className="autom__channel mono">{s.channel}</span>
                   </div>
-                  <pre className="term__body mono">{`[09:00:01] beat: scheduler started
-[09:00:01] → monthly_report.dispatch()
-[09:00:02] ✓ block-kit summary built
-[09:00:02] ✓ posted #management
-[12:00:00] → timesheet_reminder.run()
-[12:00:01] ✓ 3 nudges @tagged
-[12:00:01] exit code 0`}</pre>
+                ))}
+              </div>
+            </div>
+            <div className="autom__visual">
+              <div className="term">
+                <div className="term__bar">
+                  <i /><i /><i />
+                  <span className="mono">mh02 · automation log</span>
                 </div>
+                <pre className="term__body mono">{`[SUN 12:00] timesheet_reminder.run()
+[SUN 12:00] ✓ 3 nudges sent, @tagged
+[MON 09:14] → claim approved · ₹4,200
+[MON 09:14] ✓ notified @accounts
+[1st 09:00] monthly_report.dispatch()
+[1st 09:00] ✓ posted #management
+            0 missed · 0 manual`}</pre>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ───────────────────────── PROCESS ────────────────────── */}
-      <section className="section" id="process">
+      {/* ──────────────────── SECURITY / TRUST ────────────────── */}
+      <section className="section trust" id="trust">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 02 - PROCESS ]</span>
-            <h2 className="section-title">Five stages. Zero surprises.</h2>
+            <span className="eyebrow">[ 04 - BUILT TO BE TRUSTED ]</span>
+            <h2 className="section-title">Your ops data is the business.<br />We treat it that way.</h2>
+          </motion.div>
+          <div className="trust__grid">
+            {[
+              { icon: IconShield, title: 'Role-scoped access', desc: 'Four roles, each seeing exactly their surface. An employee never sees payroll; accounts never edits projects.' },
+              { icon: IconDatabase, title: 'Your infrastructure', desc: 'Containerised deploys that run on your servers or ours. Enterprise data never leaves your network.' },
+              { icon: IconBolt, title: 'Fail-safe delivery', desc: 'Every notification is queued, retried and logged. If Slack blinks, the message still lands.' },
+              { icon: IconLayers, title: 'Boring, proven stack', desc: 'FastAPI, PostgreSQL, Redis and Celery - audited dependencies and a stack your own engineers can inspect.' },
+              { icon: IconUsers, title: 'Full audit trail', desc: 'Every approval, edit and rupee is attributable. Month-end questions take seconds, not archaeology.' },
+              { icon: IconTerminal, title: 'Exportable, always', desc: 'Your data is yours. Clean exports for your CA, your accounting tools, or your way out - no lock-in.' },
+            ].map((t, i) => {
+              const Icon = t.icon;
+              return (
+                <motion.div className="trust__item" key={t.title} {...fadeUp} transition={{ ...fadeUp.transition, delay: (i % 3) * 0.07 }}>
+                  <span className="trust__icon"><Icon width={22} height={22} /></span>
+                  <h3>{t.title}</h3>
+                  <p>{t.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────── HOW IT WORKS ──────────────────── */}
+      <section className="section" id="how">
+        <div className="container">
+          <motion.div className="section__head" {...fadeUp}>
+            <span className="eyebrow">[ 05 - GETTING STARTED ]</span>
+            <h2 className="section-title">Three steps. One week.</h2>
           </motion.div>
           <div className="proc">
             <div className="proc__line" />
-            {PROCESS.map((p, i) => (
+            {STEPS.map((p, i) => (
               <motion.div className="proc__step" key={p.n} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.06 }}>
                 <span className="proc__n mono">{p.n}</span>
                 <h3 className="proc__title">{p.title}</h3>
@@ -240,39 +442,77 @@ export default function Home({ introDone }) {
         </div>
       </section>
 
-      {/* ───────────────────────── STACK ──────────────────────── */}
-      <section className="section" id="stack">
+      {/* ───────────────────────── PRICING ────────────────────── */}
+      <section className="section pricing" id="pricing">
         <div className="container">
           <motion.div className="section__head" {...fadeUp}>
-            <span className="eyebrow">[ 03 - STACK ]</span>
-            <h2 className="section-title">The tools we trust.</h2>
+            <span className="eyebrow">[ 06 - PRICING ]</span>
+            <h2 className="section-title">Plans that scale with the studio.</h2>
+            <p className="section__lead">
+              Pricing is per deployment, not per surprise. Tell us your team size and we&apos;ll quote
+              in one business day.
+            </p>
           </motion.div>
-          <div className="stack-grid">
-            {Object.entries(STACK).map(([cat, items], i) => (
-              <motion.div className="stack-col" key={cat} {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.07 }}>
-                <span className="stack-col__cat mono">{cat}</span>
-                <ul>
-                  {items.map((it) => <li key={it} className="stack-col__item">{it}</li>)}
+          <div className="pricing__grid">
+            {PLANS.map((p, i) => (
+              <motion.div
+                className={`plan ${p.featured ? 'plan--featured' : ''}`}
+                key={p.name}
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: i * 0.08 }}
+              >
+                <span className="plan__tag mono">{p.tag}</span>
+                <h3 className="plan__name">{p.name}</h3>
+                <p className="plan__blurb">{p.blurb}</p>
+                <ul className="plan__features">
+                  {p.features.map((f) => <li key={f}><span className="dotmark" />{f}</li>)}
                 </ul>
+                <a
+                  href={`mailto:xyz@studiomh02.com?subject=MH02%20Dashboard%20-%20${encodeURIComponent(p.name)}`}
+                  className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'} plan__cta`}
+                >
+                  {p.cta} <IconArrow width={16} height={16} />
+                </a>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ─────────────────────────── FAQ ──────────────────────── */}
+      <section className="section faq" id="faq">
+        <div className="container faq__wrap">
+          <motion.div className="section__head" {...fadeUp}>
+            <span className="eyebrow">[ 07 - FAQ ]</span>
+            <h2 className="section-title">Questions studios ask us.</h2>
+          </motion.div>
+          <motion.div className="faq__list" {...fadeUp}>
+            {FAQS.map((f, i) => (
+              <FaqItem
+                key={f.q}
+                {...f}
+                open={openFaq === i}
+                onToggle={() => setOpenFaq(openFaq === i ? -1 : i)}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ───────────────────────── CONTACT ────────────────────── */}
       <section className="section contact" id="contact">
         <motion.div className="contact__panel container" {...fadeUp}>
-          <span className="eyebrow">[ START A PROJECT ]</span>
+          <span className="eyebrow">[ GET STARTED ]</span>
           <h2 className="contact__title">
-            Have a system worth <span className="text-grad">building right?</span>
+            Give your studio its <span className="text-grad">operating system.</span>
           </h2>
-          <p className="contact__sub">Tell us what you&apos;re shipping. We reply within one business day.</p>
+          <p className="contact__sub">A 30-minute demo on your workflows. We reply within one business day.</p>
           <Magnet padding={50} strength={0.3}>
-            <a href="mailto:xyz@studiomh02.com" className="btn btn--primary btn--lg">
-              xyz@studiomh02.com <IconArrow width={18} height={18} />
+            <a href={DEMO_MAIL} className="btn btn--primary btn--lg">
+              Book a demo <IconArrow width={18} height={18} />
             </a>
           </Magnet>
+          <span className="contact__alt mono">or write to xyz@studiomh02.com</span>
         </motion.div>
       </section>
     </main>
