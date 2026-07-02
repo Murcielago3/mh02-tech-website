@@ -469,7 +469,7 @@ export default function Home({ introDone = true }) {
                 </a>
               </Magnet>
               <Magnet padding={50} strength={0.3}>
-                <Link to="/contact" className="btn btn--ghost btn--lg" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+                <Link to="/contact" className="btn btn--light btn--lg">
                   Contact Us
                 </Link>
               </Magnet>

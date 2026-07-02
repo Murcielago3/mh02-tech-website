@@ -580,13 +580,13 @@
   font-size: clamp(2rem, 4.4vw, 3.4rem);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--ink-text);
+  color: #ffffff;
   max-width: 20ch;
   pointer-events: none;
 }
 .contact__title em { font-family: var(--font-accent); font-style: italic; font-weight: 460; font-size: 1.06em; color: #6fe0ac; }
-.contact__sub { color: var(--ink-text-secondary); font-size: 1rem; max-width: 46ch; pointer-events: none; }
-.contact__alt { font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(185, 207, 194, 0.6); pointer-events: none; }
+.contact__sub { color: rgba(255, 255, 255, 0.8); font-size: 1rem; max-width: 46ch; pointer-events: none; }
+.contact__alt { font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(255, 255, 255, 0.5); pointer-events: none; }
 
 /* ─────────────────────────── RESPONSIVE ─────────────────────── */
 @media (max-width: 1024px) {

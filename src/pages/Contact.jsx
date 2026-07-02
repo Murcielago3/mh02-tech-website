@@ -38,8 +38,8 @@ export default function Contact() {
     <main className="contact-page">
       <div className="contact__wrap">
         <motion.div className="contact__header" {...fadeUp}>
-          <h1 className="contact__title">Talk to <em>the team.</em></h1>
-          <p className="contact__lead">
+          <h1 className="contact-page__title">Talk to <em>the team.</em></h1>
+          <p className="contact-page__lead">
             Give us a call. We're happy to walk you through the platform or discuss how it can fit your studio's workflows.
           </p>
         </motion.div>
