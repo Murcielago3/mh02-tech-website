@@ -49,8 +49,10 @@
   color: var(--text);
 }
 .nav__wordmark span {
+  font-family: var(--font-accent);
   font-style: italic;
   font-weight: 440;
+  font-size: 1.1em;
   color: var(--green);
   margin-left: 0.3rem;
 }

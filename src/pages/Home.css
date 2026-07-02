@@ -81,8 +81,10 @@
   max-width: 17ch;
 }
 .hero__title em {
+  font-family: var(--font-accent);
   font-style: italic;
   font-weight: 460;
+  font-size: 1.06em;
   color: var(--green);
 }
 
@@ -329,7 +331,7 @@
   letter-spacing: -0.015em;
   color: var(--ink-text);
 }
-.autom__title em { font-style: italic; font-weight: 460; color: #6fe0ac; }
+.autom__title em { font-family: var(--font-accent); font-style: italic; font-weight: 460; font-size: 1.06em; color: #6fe0ac; }
 .autom__lead { color: var(--ink-text-secondary); font-size: 0.98rem; line-height: 1.75; }
 .autom__rows { display: flex; flex-direction: column; margin-top: 0.5rem; }
 .autom__row {
@@ -572,7 +574,7 @@
   color: var(--ink-text);
   max-width: 20ch;
 }
-.contact__title em { font-style: italic; font-weight: 460; color: #6fe0ac; }
+.contact__title em { font-family: var(--font-accent); font-style: italic; font-weight: 460; font-size: 1.06em; color: #6fe0ac; }
 .contact__sub { color: var(--ink-text-secondary); font-size: 1rem; max-width: 46ch; }
 .contact__alt { font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(185, 207, 194, 0.6); }
 

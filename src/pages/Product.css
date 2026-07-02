@@ -41,8 +41,10 @@
   color: var(--text);
 }
 .prod-hero__title em {
+  font-family: var(--font-accent);
   font-style: italic;
   font-weight: 460;
+  font-size: 1.06em;
   color: var(--green);
 }
 .prod-hero__tag {
@@ -341,7 +343,9 @@
 .prod-cta__title .text-grad {
   background: none;
   -webkit-text-fill-color: currentColor;
+  font-family: var(--font-accent);
   font-style: italic;
+  font-size: 1.06em;
   color: #6fe0ac;
 }
 .prod-cta__sub { color: var(--ink-text-secondary); font-size: 1rem; max-width: 48ch; }

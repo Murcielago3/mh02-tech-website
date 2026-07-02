@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ─── Reset ──────────────────────────────────────────────────── */
 *,
@@ -55,8 +55,10 @@ body {
   --ink-text-secondary: #b9cfc2;
   --ink-border: rgba(242, 248, 244, 0.16);
 
-  /* Type: Archivo Black = heavy squared display slab, Archivo = strong sans */
+  /* Type: Archivo Black = heavy squared display slab, Archivo = strong sans,
+     Fraunces (italic) = luxury serif used only for green accent phrases */
   --font-display: 'Archivo Black', 'Archivo', sans-serif;
+  --font-accent: 'Fraunces', Georgia, serif;
   --font-sans: 'Archivo', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
@@ -141,8 +143,10 @@ body {
   font-size: clamp(2rem, 4.2vw, 3.3rem);
 }
 .section-title em {
+  font-family: var(--font-accent);
   font-style: italic;
-  font-weight: 480;
+  font-weight: 460;
+  font-size: 1.08em;
   color: var(--green);
 }
 
