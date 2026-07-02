@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ─── Reset ──────────────────────────────────────────────────── */
 *,
@@ -55,8 +55,8 @@ body {
   --ink-text-secondary: #b9cfc2;
   --ink-border: rgba(242, 248, 244, 0.16);
 
-  /* Type: Fraunces = retro/luxury serif display, Archivo = strong sans */
-  --font-display: 'Fraunces', Georgia, serif;
+  /* Type: Archivo Black = heavy squared display slab, Archivo = strong sans */
+  --font-display: 'Archivo Black', 'Archivo', sans-serif;
   --font-sans: 'Archivo', sans-serif;
   --font-body: 'Archivo', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
