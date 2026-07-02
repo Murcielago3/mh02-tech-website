@@ -121,6 +121,25 @@
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .nav__links, .nav__rule { display: none; }
+  .nav__rule { display: none; }
   .nav__cta { margin-left: auto; }
+  
+  .nav__links {
+    position: fixed;
+    top: auto;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 40px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0,0,0,0.08);
+    scrollbar-width: none;
+  }
+  .nav__links::-webkit-scrollbar { display: none; }
 }

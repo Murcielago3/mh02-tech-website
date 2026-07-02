@@ -153,3 +153,7 @@
   .foot__grid { grid-column: 1; grid-row: auto; }
   .foot__fine { flex-direction: column; text-align: center; }
 }
+@media (max-width: 768px) {
+  .foot__inner { padding-top: var(--space-3xl); }
+  .foot__ghost { font-size: clamp(4rem, 18vw, 8rem); bottom: -0.1em; }
+}
