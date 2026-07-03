@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cards — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; background: var(--bg-2); }
+  .row { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
+  .mod-card { width: 320px; padding: 1.8rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .mod-top { display: flex; justify-content: space-between; align-items: center; }
+  .mod-icon { display: inline-flex; padding: 0.65rem; border-radius: var(--radius-md); color: var(--green); background: var(--green-pale); border: 1px solid var(--green-line); }
+  .mod-n { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); letter-spacing: 0.14em; }
+  .mod-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--text); }
+  .mod-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+  .tags { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+  .pain-card { width: 320px; padding: 1.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .painfix { padding-top: 0.9rem; border-top: 1px dashed var(--border); display: flex; gap: 0.7rem; }
+  .painfix span { color: var(--green-bright); font-family: var(--font-mono); }
+  .painfix p { color: var(--green-deep); font-size: 0.9rem; font-weight: 500; line-height: 1.65; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <!-- Module card -->
+    <div class="card mod-card">
+      <div class="mod-top">
+        <span class="mod-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 16v-3M12 16V8M16 16v-6M20 16v-9"/></svg>
+        </span>
+        <span class="mod-n">01</span>
+      </div>
+      <h3 class="mod-title">Projects &amp; Estimation</h3>
+      <p class="mod-desc">See how a project is actually doing - hours burned, timeline, budget. Estimate the next one from your team's real history.</p>
+      <div class="tags"><span class="tag">Live stats</span><span class="tag">Confidence bands</span></div>
+    </div>
+
+    <!-- Pain card -->
+    <div class="card pain-card">
+      <span style="color:var(--pain-red); font-family:var(--font-mono); font-size:0.8rem;">✕</span>
+      <h3 class="mod-title" style="font-size:1.25rem;">Half the week is spent nagging people</h3>
+      <p class="mod-desc">Every Friday someone's chasing timesheets. Every month-end someone's pinging managers who forgot to approve things.</p>
+      <div class="painfix"><span>→</span><p>Slack handles the reminders now. It knows who's late and tags them directly.</p></div>
+    </div>
+  </div>
+  <p style="font-family:var(--font-mono); font-size:0.64rem; color:var(--text-muted); margin-top:20px;">
+    White fill · 1px hairline rgba(16,35,26,.10) · radius 16px · shadow 0 12px 32px -16px rgba(16,35,26,.14) · icons 1.5px stroke on 24px grid
+  </p>
+</body>
+</html>

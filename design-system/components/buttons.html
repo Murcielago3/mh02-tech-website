@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Buttons — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; }
+  h2 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-bright); margin: 28px 0 14px; }
+  h2:first-of-type { margin-top: 0; }
+  .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .ink-demo { padding: 28px; border-radius: var(--radius-lg); }
+  .spec { font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-muted); margin-top: 10px; }
+  .arrow { display:inline-block; }
+</style>
+</head>
+<body>
+  <h2>Primary — gradient pill</h2>
+  <div class="row">
+    <a class="btn btn--primary" href="#">Book a demo <span class="arrow">→</span></a>
+    <a class="btn btn--primary" style="padding:1.05rem 2.1rem; font-size:1rem;" href="#">Book a demo <span class="arrow">→</span></a>
+  </div>
+  <p class="spec">Fill: linear-gradient(180deg, #2C9663, #175C3C) · white text · shadow 0 6px 24px rgba(33,122,82,.28) · fully rounded</p>
+
+  <h2>Secondary — ghost pill (mono label)</h2>
+  <div class="row">
+    <a class="btn btn--ghost" href="#"><span class="pulse-dot"></span> Try the live tour</a>
+    <a class="btn btn--ghost" href="#">View architecture</a>
+  </div>
+  <p class="spec">White fill · 1px border rgba(16,35,26,.16) · JetBrains Mono 0.8rem label · optional pulsing dot</p>
+
+  <h2>On ink panels — light pill</h2>
+  <div class="ink-panel ink-demo row">
+    <a class="btn btn--light" href="#">Book a demo <span class="arrow">→</span></a>
+    <a class="btn" style="background:transparent; color:var(--ink-text); border-color:var(--ink-border); font-family:var(--font-mono); font-size:0.8rem;" href="#">See pricing</a>
+  </div>
+  <p class="spec">White pill w/ deep-green text on #0D3524 · outline variant uses 16% white border</p>
+</body>
+</html>

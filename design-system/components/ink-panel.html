@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ink Panel — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; }
+  .panel {
+    max-width: 780px;
+    padding: 72px 48px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.3rem;
+  }
+  .panel .display { font-size: 2.8rem; color: #ffffff; }
+  .panel .sub { color: rgba(255,255,255,0.8); font-size: 1rem; max-width: 46ch; }
+  .panel .alt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); }
+  .ghost {
+    position: absolute; bottom: -0.28em; right: -0.02em;
+    font-family: var(--font-display); font-style: italic; font-size: 9rem; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px rgba(242,248,244,0.07); pointer-events: none;
+  }
+  .dots i { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+  <div class="ink-panel panel on-ink">
+    <!-- faint particle dots -->
+    <span class="dots" aria-hidden="true">
+      <i style="top:14%; left:12%"></i><i style="top:28%; left:78%"></i><i style="top:62%; left:8%"></i>
+      <i style="top:70%; left:88%"></i><i style="top:18%; left:52%"></i><i style="top:82%; left:38%"></i>
+      <i style="top:44%; left:92%"></i><i style="top:56%; left:22%"></i>
+    </span>
+    <h2 class="display">Ready to stop <span class="accent">winging it?</span></h2>
+    <p class="sub">30 minutes, your workflows, no slides. We'll reply within a day.</p>
+    <a class="btn btn--light" href="#">Book a demo →</a>
+    <span class="alt">or write to hello.tech@studiomh02.com</span>
+    <span class="ghost" aria-hidden="true">MH02</span>
+  </div>
+  <p style="font-family:var(--font-mono); font-size:0.64rem; color:var(--text-muted); margin-top:20px;">
+    #0D3524 fill · 24px radius · mint radial glow from bottom edge · tiny white particle dots ·
+    ghost outline wordmark in corner · accent phrase in #6FE0AC
+  </p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- @dsCard group="Colors" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Colors — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; }
+  h2 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-bright); margin: 28px 0 12px; }
+  h2:first-of-type { margin-top: 0; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { width: 132px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+  .swatch i { display: block; height: 72px; }
+  .swatch div { padding: 8px 10px; background: #fff; }
+  .swatch b { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text); }
+  .swatch span { font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <h2>Brand greens</h2>
+  <div class="row">
+    <div class="swatch"><i style="background:#217a52"></i><div><b>Green</b><span>#217A52 · primary accent</span></div></div>
+    <div class="swatch"><i style="background:#2c9663"></i><div><b>Green bright</b><span>#2C9663 · gradients, dots</span></div></div>
+    <div class="swatch"><i style="background:#175c3c"></i><div><b>Green deep</b><span>#175C3C · emphasis</span></div></div>
+    <div class="swatch"><i style="background:#0d3524"></i><div><b>Green ink</b><span>#0D3524 · dark panels</span></div></div>
+    <div class="swatch"><i style="background:#6fe0ac"></i><div><b>Mint</b><span>#6FE0AC · accent on ink</span></div></div>
+  </div>
+
+  <h2>Surfaces</h2>
+  <div class="row">
+    <div class="swatch"><i style="background:#ffffff; border-bottom:1px solid var(--border)"></i><div><b>Background</b><span>#FFFFFF · default</span></div></div>
+    <div class="swatch"><i style="background:#f3f8f5"></i><div><b>Background 2</b><span>#F3F8F5 · green paper</span></div></div>
+    <div class="swatch"><i style="background:rgba(33,122,82,0.07)"></i><div><b>Green pale</b><span>7% green · chip fills</span></div></div>
+    <div class="swatch"><i style="background:rgba(16,35,26,0.1)"></i><div><b>Border</b><span>10% ink · hairlines</span></div></div>
+  </div>
+
+  <h2>Text on white</h2>
+  <div class="row">
+    <div class="swatch"><i style="background:#10231a"></i><div><b>Text</b><span>#10231A · headings</span></div></div>
+    <div class="swatch"><i style="background:#47594f"></i><div><b>Secondary</b><span>#47594F · body</span></div></div>
+    <div class="swatch"><i style="background:#6f8076"></i><div><b>Muted</b><span>#6F8076 · metadata</span></div></div>
+    <div class="swatch"><i style="background:#a9b6ae"></i><div><b>Faint</b><span>#A9B6AE · numbering</span></div></div>
+    <div class="swatch"><i style="background:#c25454"></i><div><b>Pain red</b><span>#C25454 · ✕ only</span></div></div>
+  </div>
+
+  <h2>Text on ink panels</h2>
+  <div class="row">
+    <div class="swatch"><i style="background:#f2f8f4"></i><div><b>Ink text</b><span>#F2F8F4</span></div></div>
+    <div class="swatch"><i style="background:#b9cfc2"></i><div><b>Ink secondary</b><span>#B9CFC2</span></div></div>
+  </div>
+</body>
+</html>

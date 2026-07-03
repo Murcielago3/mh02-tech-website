@@ -1,0 +1,181 @@
+/* ═══════════ MH02 Dashboard — shared design tokens ═══════════
+   Single source of truth for all preview cards in this kit.
+   Mirrors src/index.css on the live site. */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'MILKER';
+  src: url('./fonts/Milker.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Wasted Vindey';
+  src: url('./fonts/Wasted-Vindey.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  /* Brand greens */
+  --green: #217a52;
+  --green-bright: #2c9663;
+  --green-deep: #175c3c;
+  --green-ink: #0d3524;
+  --green-pale: rgba(33, 122, 82, 0.07);
+  --green-line: rgba(33, 122, 82, 0.22);
+
+  /* Light surfaces */
+  --bg: #ffffff;
+  --bg-2: #f3f8f5;
+  --border: rgba(16, 35, 26, 0.1);
+  --border-strong: rgba(16, 35, 26, 0.16);
+
+  /* Text on white */
+  --text: #10231a;
+  --text-secondary: #47594f;
+  --text-muted: #6f8076;
+  --text-faint: #a9b6ae;
+
+  /* Text on green-ink panels */
+  --ink-text: #f2f8f4;
+  --ink-text-secondary: #b9cfc2;
+  --ink-mint: #6fe0ac;
+  --ink-border: rgba(242, 248, 244, 0.16);
+
+  /* Pain-point red (only red allowed) */
+  --pain-red: #c25454;
+
+  /* Type */
+  --font-display: 'MILKER', 'Archivo Black', 'Archivo', sans-serif;
+  --font-accent: 'Wasted Vindey', 'Fraunces', Georgia, serif;
+  --font-sans: 'Archivo', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows (green-tinted, whisper-quiet) */
+  --shadow-card: 0 1px 2px rgba(16, 35, 26, 0.05), 0 12px 32px -16px rgba(16, 35, 26, 0.14);
+  --shadow-lift: 0 2px 4px rgba(16, 35, 26, 0.06), 0 24px 48px -20px rgba(16, 35, 26, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Shared primitives ──────────────────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--green-line);
+}
+
+.display {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.06em;
+  color: var(--green);
+}
+.on-ink .accent { color: var(--ink-mint); }
+
+.mono { font-family: var(--font-mono); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.7rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn--primary {
+  background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(33, 122, 82, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.btn--ghost {
+  background: #ffffff;
+  color: var(--text);
+  border-color: var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+.btn--light {
+  background: #ffffff;
+  color: var(--green-deep);
+  box-shadow: 0 6px 24px rgba(6, 24, 16, 0.35);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-pale);
+  border: 1px solid var(--green-line);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-bright);
+  box-shadow: 0 0 10px var(--green-bright);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.ink-panel {
+  background: radial-gradient(ellipse 70% 90% at 50% 115%, rgba(111, 224, 172, 0.14), transparent), var(--green-ink);
+  color: var(--ink-text);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}

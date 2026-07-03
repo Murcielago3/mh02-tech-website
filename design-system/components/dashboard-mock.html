@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Mock — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; background: var(--bg-2); }
+  .dash { max-width: 460px; overflow: hidden; box-shadow: var(--shadow-lift); border-radius: var(--radius-lg); border: 1px solid var(--border); background: #fff; }
+  .bar { display: flex; align-items: center; gap: 0.55rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); background: var(--bg-2); }
+  .bar span { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--text-muted); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+  .stat { background: #fff; padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.2rem; }
+  .stat b { font-family: var(--font-display); font-size: 1.7rem; color: var(--green); line-height: 1; }
+  .stat span { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; }
+  .feed { padding: 0.7rem 0.9rem; display: flex; flex-direction: column; gap: 0.45rem; }
+  .rowi { display: grid; grid-template-columns: auto 1fr auto; gap: 0.7rem; align-items: center; padding: 0.5rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--green-pale); font-family: var(--font-mono); font-size: 0.7rem; }
+  .rowi i { color: var(--green-bright); font-style: normal; }
+  .rowi u { color: var(--text-secondary); text-decoration: none; }
+  .rowi s { color: var(--text-faint); text-decoration: none; font-size: 0.62rem; }
+</style>
+</head>
+<body>
+  <div class="dash">
+    <div class="bar"><span class="pulse-dot"></span><span>ops · your studio today</span></div>
+    <div class="grid">
+      <div class="stat"><b>3</b><span>Pending timesheets</span></div>
+      <div class="stat"><b>7</b><span>Open claims</span></div>
+      <div class="stat"><b>12</b><span>Reports sent</span></div>
+      <div class="stat"><b>0</b><span>Compiled by hand</span></div>
+    </div>
+    <div class="feed">
+      <div class="rowi"><i>✓</i><u>Reimbursement approved · ₹4,200</u><s>accounts</s></div>
+      <div class="rowi"><i>→</i><u>Timesheet submitted · week 25</u><s>employee</s></div>
+      <div class="rowi"><i>◆</i><u>Monthly report posted</u><s>#management</s></div>
+    </div>
+  </div>
+  <p style="font-family:var(--font-mono); font-size:0.64rem; color:var(--text-muted); margin-top:20px;">
+    Fake-UI panel: mono header bar w/ pulse dot · display-font numbers in green · mono labels ·
+    feed rows on pale-green fills. Great as an IG "stats" visual.
+  </p>
+</body>
+</html>

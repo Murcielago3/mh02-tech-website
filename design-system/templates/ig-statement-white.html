@@ -1,0 +1,47 @@
+<!-- @dsCard group="Instagram Templates" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IG · Statement (white) — 1080×1350</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { width: 1080px; height: 1350px; overflow: hidden; position: relative; }
+  .rays {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 85% 0%, rgba(44,150,99,0.16), transparent 70%),
+      radial-gradient(ellipse 45% 30% at 70% 8%, rgba(111,224,172,0.18), transparent 70%);
+  }
+  .frame { position: absolute; inset: 0; padding: 96px; display: flex; flex-direction: column; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 14px; align-self: flex-start;
+    padding: 14px 30px; border: 1px solid rgba(33,122,82,0.15); border-radius: 999px;
+    background: rgba(255,255,255,0.7); font-family: var(--font-mono); font-size: 17px;
+    letter-spacing: 0.22em; color: var(--green-deep);
+  }
+  .badge i { width: 12px; height: 12px; border-radius: 50%; background: var(--green); box-shadow: 0 0 18px var(--green); }
+  h1 { font-family: var(--font-display); font-size: 118px; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-top: 170px; font-weight: normal; }
+  h1 em { font-family: var(--font-accent); font-style: italic; font-size: 1.06em; color: var(--green); }
+  .sub { margin-top: 56px; font-size: 34px; line-height: 1.6; color: var(--text-secondary); max-width: 21em; }
+  .cta {
+    margin-top: auto; display: inline-flex; align-items: center; gap: 16px; align-self: flex-start;
+    padding: 30px 58px; border-radius: 999px;
+    background: linear-gradient(180deg, var(--green-bright), var(--green-deep));
+    color: #fff; font-size: 32px; font-weight: 600;
+    box-shadow: 0 14px 50px rgba(33,122,82,0.3), inset 0 2px 0 rgba(255,255,255,0.2);
+  }
+  .handle { position: absolute; bottom: 96px; right: 96px; font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.14em; color: var(--text-faint); }
+</style>
+</head>
+<body>
+  <div class="rays" aria-hidden="true"></div>
+  <div class="frame">
+    <span class="badge"><i></i> MH02 DASHBOARD</span>
+    <h1>Run your studio,<br><em>not your software.</em></h1>
+    <p class="sub">One platform for clients, projects, timesheets, and invoicing. Wired into Slack so nothing falls through.</p>
+    <span class="cta">Book a demo →</span>
+    <span class="handle">tech.studiomh02.com</span>
+  </div>
+</body>
+</html>

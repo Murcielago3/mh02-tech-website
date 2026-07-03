@@ -1,0 +1,48 @@
+<!-- @dsCard group="Type" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Typography — MH02 Dashboard</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body { padding: 40px; max-width: 860px; }
+  h2 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-bright); margin: 32px 0 14px; }
+  h2:first-of-type { margin-top: 0; }
+  .spec { font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-muted); margin-top: 4px; }
+  .headline { font-size: 3.2rem; }
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+</style>
+</head>
+<body>
+  <h2>The signature headline — two-font flip</h2>
+  <div class="display headline">
+    Run your studio,<br><span class="accent">not your software.</span>
+  </div>
+  <p class="spec">Line 1: MILKER (sub: Archivo Black), #10231A, lh 1.05, tracking -0.02em<br>
+  Line 2: Wasted Vindey italic (sub: Fraunces Italic), #217A52, 1.06× size of line 1<br>
+  The italic green phrase is ALWAYS the closing phrase, never the opener.</p>
+
+  <div class="divider"></div>
+
+  <h2>Voice 1 · Display — MILKER</h2>
+  <div class="display" style="font-size:2.2rem">Six modules. One login.</div>
+  <p class="spec">All big headlines. Heavy, squared, slight negative tracking.</p>
+
+  <h2>Voice 2 · Accent — Wasted Vindey (italic only)</h2>
+  <div class="accent" style="font-size:2.2rem">it handles the rest.</div>
+  <p class="spec">ONLY for the green emphasized phrase. Never full paragraphs.</p>
+
+  <h2>Voice 3 · Body — Archivo</h2>
+  <p style="color:var(--text-secondary); font-size:1rem; line-height:1.7; max-width:52ch;">
+    Every Friday someone's chasing timesheets. Every month-end someone's pinging managers
+    who forgot to approve things. It's tedious and nobody likes being that person.
+  </p>
+  <p class="spec">Archivo 400, #47594F, lh 1.7. Buttons use 600.</p>
+
+  <h2>Voice 4 · Technical — JetBrains Mono</h2>
+  <p class="eyebrow">[ 01 - PLATFORM ]</p>
+  <p class="mono" style="font-size:0.72rem; color:var(--text-muted); margin-top:10px;">SUN · 12:00&nbsp;&nbsp;·&nbsp;&nbsp;#management&nbsp;&nbsp;·&nbsp;&nbsp;crm · org · hr</p>
+  <p class="spec">Eyebrows (uppercase, 0.22em tracking, #2C9663), timestamps, chips, metadata. Small doses only.</p>
+</body>
+</html>

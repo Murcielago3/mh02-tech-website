@@ -1,0 +1,44 @@
+<!-- @dsCard group="Instagram Templates" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IG · Automation Receipt — 1080×1350</title>
+<link rel="stylesheet" href="../ds.css">
+<style>
+  body {
+    width: 1080px; height: 1350px; overflow: hidden; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 70px;
+  }
+  .eyebrow-ig { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.22em; color: var(--green-bright); }
+  .eyebrow-ig::before, .eyebrow-ig::after { content: ''; width: 44px; height: 2px; background: var(--green-line); }
+  .log {
+    width: 780px; border: 2px solid var(--border); border-radius: 24px;
+    box-shadow: var(--shadow-lift); overflow: hidden; background: #fff;
+  }
+  .log-bar { display: flex; align-items: center; gap: 14px; padding: 22px 30px; background: var(--bg-2); border-bottom: 2px solid var(--border); }
+  .log-bar i { width: 13px; height: 13px; border-radius: 50%; background: var(--green-bright); box-shadow: 0 0 16px var(--green-bright); }
+  .log-bar span { font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.1em; color: var(--text-muted); }
+  .rows { padding: 34px 40px; display: flex; flex-direction: column; gap: 30px; }
+  .row { font-family: var(--font-mono); font-size: 25px; line-height: 1.5; color: var(--text-secondary); }
+  .row b { color: var(--green); font-weight: 500; }
+  .row s { text-decoration: none; color: var(--text-faint); }
+  .punch { font-family: var(--font-accent); font-style: italic; font-size: 88px; color: var(--green); }
+  .brand { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.2em; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <span class="eyebrow-ig">LAST MONTH, AUTOMATED</span>
+  <div class="log">
+    <div class="log-bar"><i></i><span>mh02 · automation log</span></div>
+    <div class="rows">
+      <div class="row"><b>[SUN 12:00]</b> timesheet reminders → 3 nudges sent, tagged</div>
+      <div class="row"><b>[MON 09:14]</b> claim approved ₹4,200 → <s>@accounts notified</s></div>
+      <div class="row"><b>[1st 09:00]</b> monthly report → posted <s>#management</s></div>
+      <div class="row"><b>[EVERY DAY]</b> approvals routed → <s>0 forwarded by hand</s></div>
+    </div>
+  </div>
+  <span class="punch">you did nothing.</span>
+  <span class="brand">MH02 DASHBOARD · TECH.STUDIOMH02.COM</span>
+</body>
+</html>
