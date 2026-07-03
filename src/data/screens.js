@@ -8,7 +8,6 @@ export const SCREENS = [
     label: 'Dashboard',
     icon: '▦',
     url: 'mh02.app/dashboard',
-    image: '/preview/admin-dash.png',
     title: 'Your morning dashboard.',
     caption:
       'Open this first thing. You can see what\'s pending, who needs to do what, and what just happened - without asking anyone.',
@@ -23,7 +22,6 @@ export const SCREENS = [
     label: 'Clients',
     icon: '◉',
     url: 'mh02.app/clients/new',
-    image: '/preview/add-client.png',
     title: 'Add a client in about a minute.',
     caption:
       'Fill in the basics, hit save. Every project, invoice and billing with that client connects back to this record. No spreadsheet required.',
@@ -37,7 +35,6 @@ export const SCREENS = [
     label: 'Team',
     icon: '⬢',
     url: 'mh02.app/employees',
-    image: '/preview/employees-tab.png',
     title: 'Everyone on one screen.',
     caption:
       'Your whole team - role, reporting line, status. Need to onboard someone or change a title? Do it here, not through an HR ticket.',
@@ -51,7 +48,6 @@ export const SCREENS = [
     label: 'HR',
     icon: '✦',
     url: 'mh02.app/hr/increments',
-    image: '/preview/hr-increment.png',
     title: 'HR stuff, where it belongs.',
     caption:
       'Increments, appraisals, public holidays, payroll context - recorded against the person, not lost in someone\'s inbox.',
@@ -65,7 +61,6 @@ export const SCREENS = [
     label: 'Projects',
     icon: '▤',
     url: 'mh02.app/projects/stats',
-    image: '/preview/project-stats-1.png',
     title: 'See where each project actually stands.',
     caption:
       'Hours, budget, delivery progress - one screen per project. Leadership can check in without scheduling a meeting.',
@@ -79,7 +74,6 @@ export const SCREENS = [
     label: 'Estimation',
     icon: '∑',
     url: 'mh02.app/projects/estimate',
-    image: '/preview/project-estimation.png',
     title: 'Stop guessing on estimates.',
     caption:
       'New pitch? The system looks at how long similar work actually took your team and gives you a range. You go in knowing, not hoping.',
@@ -93,7 +87,6 @@ export const SCREENS = [
     label: 'Invoicing',
     icon: '▥',
     url: 'mh02.app/invoices/new',
-    image: '/preview/invoice-generation.png',
     title: 'Invoicing that does itself.',
     caption:
       'The hours are logged, the expenses are approved. The invoice assembles itself from that data. Accounts reviews it and hits send. Five minutes, tops.',
@@ -107,7 +100,6 @@ export const SCREENS = [
     label: 'Reports',
     icon: '◫',
     url: 'mh02.app/projects/report',
-    image: '/preview/project-report.png',
     title: 'Reports that just show up.',
     caption:
       'On the 1st, a clean summary of last month lands in the Slack leadership channel. Nobody compiled it. Nobody even thought about it.',

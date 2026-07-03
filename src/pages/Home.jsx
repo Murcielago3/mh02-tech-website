@@ -8,6 +8,7 @@ import {
 } from '../components/Icons.jsx';
 import AppFrame from '../components/AppFrame/AppFrame.jsx';
 import { SCREENS } from '../data/screens.js';
+import useSeo from '../hooks/useSeo.js';
 import './Home.css';
 
 /* three.js is ~900KB minified - load the particle background on demand
@@ -191,6 +192,12 @@ const TourSection = () => {
 /* ═══════════════════════════ Page ═══════════════════════════ */
 export default function Home({ introDone = true }) {
   const [openFaq, setOpenFaq] = useState(0);
+
+  useSeo({
+    title: 'MH02 Dashboard - Studio Operations Software for Agencies',
+    description: 'Studio operations software for creative agencies. Projects, clients, timesheets, invoicing, HR and reporting in one dashboard, with Slack automation that runs the cadence for you.',
+    path: '/',
+  });
 
   return (
     <main className="home">

@@ -6,6 +6,7 @@ import {
 import {
   IconClock, IconReceipt, IconBell, IconChart, IconUsers, IconTerminal, IconArrow,
 } from '../components/Icons.jsx';
+import useSeo from '../hooks/useSeo.js';
 import './Product.css';
 
 const fadeUp = {
@@ -48,6 +49,12 @@ const SCHEDULE = [
 ];
 
 export default function Product() {
+  useSeo({
+    title: 'Platform Deep Dive - MH02 Dashboard',
+    description: "How MH02 Dashboard's modules work together: project estimation, timesheets, invoicing with PAN/Aadhaar/TDS support, Slack automation and role-based access, all in one platform.",
+    path: '/product',
+  });
+
   return (
     <main className="prod">
       {/* ───────────────────────── HERO ───────────────────────── */}

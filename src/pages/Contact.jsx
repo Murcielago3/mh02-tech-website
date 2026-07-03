@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import { IconMail, IconPhone } from '../components/Icons.jsx';
 import Folder from '../components/reactbits/Folder.jsx';
+import useSeo from '../hooks/useSeo.js';
 import './Contact.css';
 
 const fadeUp = {
@@ -14,8 +15,13 @@ const fadeUp = {
 export default function Contact() {
   const lenis = useLenis();
 
+  useSeo({
+    title: 'Contact Us - MH02 Dashboard',
+    description: "Get in touch with the MH02 Dashboard team. Call or email to book a demo and see how our studio operations platform fits your agency's workflows.",
+    path: '/contact',
+  });
+
   useEffect(() => {
-    document.title = 'Contact | MH02 Dashboard';
     if (lenis) lenis.scrollTo(0, { immediate: true });
   }, [lenis]);
 
