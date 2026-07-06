@@ -251,6 +251,10 @@ export default function Home({ introDone = true }) {
                 <span className="btn__pulse" /> Try the live tour
               </a>
             </div>
+
+            <p className="hero__maker mono">
+              Built by an architect. For architects - From someone who's sat in your chair.
+            </p>
           </motion.div>
         </div>
       </section>
