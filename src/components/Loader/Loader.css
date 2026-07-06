@@ -63,33 +63,25 @@
   font-variant-ligatures: none;
 }
 
-/* ── Ruler / progress ───────────────────────────────────────── */
-.loader__ruler {
-  position: relative;
-  width: min(360px, 70vw);
-  height: 24px;
+/* ── Segmented meter / progress ──────────────────────────────
+   A blocky, discrete readout (think hardware VU meter or a terminal
+   progress line) instead of a smooth continuous bar. */
+.loader__meter {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-strong);
+  gap: 3px;
+  width: min(360px, 70vw);
 }
-.loader__tick {
-  width: 1px;
-  height: 6px;
-  background: var(--text-faint);
+.loader__seg {
+  flex: 1;
+  height: 13px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  transition: background 120ms steps(1), border-color 120ms steps(1), box-shadow 120ms steps(1);
 }
-.loader__tick--major {
-  height: 12px;
-  background: var(--text-muted);
-}
-.loader__ruler-fill {
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  height: 2px;
+.loader__seg--on {
   background: var(--green-bright);
-  transition: width 60ms linear;
-  box-shadow: 0 0 10px var(--green-glow);
+  border-color: var(--green-bright);
+  box-shadow: 0 0 8px var(--green-glow);
 }
 
 .loader__status {

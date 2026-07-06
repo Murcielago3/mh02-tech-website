@@ -133,14 +133,13 @@ const Loader = ({ onComplete }) => {
             <span className="loader__bracket loader__bracket--r">]</span>
           </div>
 
-          <div className="loader__ruler" aria-hidden="true">
-            {Array.from({ length: 21 }).map((_, i) => (
-              <span key={i} className={`loader__tick ${i % 5 === 0 ? 'loader__tick--major' : ''}`} />
+          <div className="loader__meter" aria-hidden="true">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span
+                key={i}
+                className={`loader__seg ${count >= ((i + 1) / 24) * 100 ? 'loader__seg--on' : ''}`}
+              />
             ))}
-            <span
-              className="loader__ruler-fill"
-              style={{ width: `${count}%` }}
-            />
           </div>
 
           <div className="loader__status mono">
